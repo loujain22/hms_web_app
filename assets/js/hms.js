@@ -428,8 +428,8 @@ select.addEventListener('change', function () {
 
 // ------------- Confirm Button (Dental) -------------
 
-function confirmInvoice(button) {
-    alert('Invoice confirmed!');
-    button.disabled = true; // لتعطيل الزر بعد التأكيد
-    button.innerText = 'Confirmed';
-}
+// function confirmInvoice(button) {
+//     alert('Invoice confirmed!');
+//     button.disabled = true; // لتعطيل الزر بعد التأكيد
+//     button.innerText = 'Confirmed';
+// }

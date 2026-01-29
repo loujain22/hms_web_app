@@ -2082,7 +2082,7 @@
                                                 </thead>
                                                 <tbody>
                                                     <tr>
-                                                        <td><input type="checkbox"></td>
+                                                        <td><input class="form-check-input" type="checkbox"></td>
                                                         <td>1</td>
                                                         <td>Sales Invoice 1</td>
                                                         <td>INV001</td>
@@ -2094,18 +2094,19 @@
                                                                 data-ar="تأكيد" data-en="Confirm">Confirm</button></td>
                                                     </tr>
                                                     <tr>
-                                                        <td><input type="checkbox"></td>
+                                                        <td><input class="form-check-input" type="checkbox"></td>
                                                         <td>2</td>
                                                         <td>Sales Invoice 2</td>
                                                         <td>INV002</td>
                                                         <td>1200</td>
                                                         <td>1200</td>
                                                         <td>0</td>
-                                                        <td><button class="confirm-btn" onclick="confirmInvoice(this)"
+                                                        <td><button class="confirm-btn" data-bs-toggle="modal"
+                                                                data-bs-target="#payDentalProcedureModal"
                                                                 data-ar="تأكيد" data-en="Confirm">Confirm</button></td>
                                                     </tr>
                                                     <tr>
-                                                        <td><input type="checkbox"></td>
+                                                        <td><input class="form-check-input" type="checkbox"></td>
                                                         <td>3</td>
                                                         <td>Sales Invoice 3</td>
                                                         <td>INV003</td>
@@ -2113,10 +2114,12 @@
                                                         <td>500</td>
                                                         <td>300</td>
                                                         <td><button class="confirm-btn" data-ar="تأكيد"
+                                                                data-bs-toggle="modal"
+                                                                data-bs-target="#payDentalProcedureModal"
                                                                 data-en="Confirm">Confirm</button></td>
                                                     </tr>
                                                     <tr>
-                                                        <td><input type="checkbox"></td>
+                                                        <td><input class="form-check-input" type="checkbox"></td>
                                                         <td>4</td>
                                                         <td>Sales Invoice 4</td>
                                                         <td>INV004</td>
@@ -2124,10 +2127,12 @@
                                                         <td>1000</td>
                                                         <td>500</td>
                                                         <td><button class="confirm-btn" data-ar="تأكيد"
+                                                                data-bs-toggle="modal"
+                                                                data-bs-target="#payDentalProcedureModal"
                                                                 data-en="Confirm">Confirm</button></td>
                                                     </tr>
                                                     <tr>
-                                                        <td><input type="checkbox"></td>
+                                                        <td><input class="form-check-input" type="checkbox"></td>
                                                         <td>5</td>
                                                         <td>Sales Invoice 5</td>
                                                         <td>INV005</td>
@@ -2135,7 +2140,144 @@
                                                         <td>700</td>
                                                         <td>0</td>
                                                         <td><button class="confirm-btn" data-ar="تأكيد"
-                                                                data-en="Confirm" Confirm</button></td>
+                                                                data-bs-toggle="modal"
+                                                                data-bs-target="#payDentalProcedureModal"
+                                                                data-en="Confirm"> Confirm </button></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row d-none" id="patientSection">
+                            <div class="col-md-12 col-lg-12">
+                                <div class="overflow-hidden card" data-aos="fade-up" data-aos-delay="600">
+                                    <div class="card-body">
+                                        <form>
+                                            <div class="row">
+                                                <div class="col form-group">
+                                                    <label class="form-label" for="patien_name" data-ar="إسم المريض"
+                                                        data-en="Patient Name">إسم المريض</label>
+                                                    <input type="text" class="form-control-sm form-control mb-3"
+                                                        id="patient_name" placeholder="خالد عمر" disabled>
+                                                </div>
+                                                <div class="col form-group">
+                                                    <label class="form-label" for="patien_sex" data-ar="النوع"
+                                                        data-en="Gender">النوع</label>
+                                                    <input type="text" class="form-control-sm form-control mb-3"
+                                                        id="patien_sex" placeholder="ذكر" disabled>
+                                                </div>
+
+                                                <div class="col form-group">
+                                                    <label class="form-label" for="mobile_phone" data-ar="رقم الموبايل"
+                                                        data-en="Mobile Phone">رقم الموبايل</label>
+                                                    <input type="text" class="form-control-sm form-control mb-3"
+                                                        id="mobile_phone" placeholder="01014478785" disabled>
+                                                </div>
+                                                <div class="col form-group">
+                                                    <label class="form-label" for="mobile_age" data-ar="عمر المريض"
+                                                        data-en="Patient Age">عمر المريض</label>
+                                                    <input type="text" class="form-control-sm form-control mb-3"
+                                                        id="patient_age" placeholder="25" disabled>
+                                                </div>
+                                            </div>
+
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+
+
+                            <div class="col-md-6 col-lg-6">
+                                <div class="card">
+                                    <div class="card-header header-grid">
+
+                                        <!-- Title -->
+                                        <h4 class="card-title m-0" data-ar="تفاصيل متابعة الحجز"
+                                            data-en="Reservation Follow Up Details">
+                                            تفاصيل متابعة الحجز
+                                        </h4>
+                                    </div>
+
+
+                                    <div class="card-body p-0">
+                                        <div class="table-responsive mt-4">
+
+                                            <table id="reservation-invoices" class="table table-striped mb-0"
+                                                role="grid">
+                                                <thead>
+                                                    <tr>
+                                                        <th><input class="form-check-input" type="checkbox" value=""
+                                                                id=""></th>
+                                                        <th data-ar="التاريخ" data-en="Date">التاريخ</th>
+                                                        <th data-ar="العمليات" data-en="Actions">العمليات</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td><input class="form-check-input" type="checkbox"></td>
+                                                        <td>28-1-2026</td>
+                                                        <td> <button type="button"
+                                                                class="btn btn-sm btn-warning d-flex align-items-center justify-content-center"
+                                                                onclick="editRow(this)" data-ar="تعديل" data-en="Edit"
+                                                                title="Edit">
+                                                                تعديل
+                                                            </button></td>
+                                                    </tr>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-6">
+                                <div class="card">
+                                    <div class="card-header header-grid">
+                                        <!-- Title -->
+                                        <h4 class="card-title m-0" data-ar="المدفوعات" data-en="Payments">
+                                            المدفوعات
+                                        </h4>
+                                    </div>
+                                    <div class="card-body p-0">
+                                        <div class="table-responsive mt-4">
+
+                                            <table id="reservation-invoices" class="table table-striped mb-0"
+                                                role="grid">
+                                                <thead>
+                                                    <tr>
+                                                        <th><input class="form-check-input" type="checkbox" value=""
+                                                                id="health_insurance"></th>
+                                                        <th data-ar="المبلغ المدفوع" data-en="Paid Amount">المبلغ
+                                                            المدفوع</th>
+                                                        <th data-ar="التاريخ" data-en="Date">التاريخ</th>
+                                                        <th data-ar="الفاتورة" data-en="Invoice">الفاتورة</th>
+                                                        <th data-ar="العمليات" data-en="Actions">العمليات </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td><input class="form-check-input" type="checkbox"></td>
+                                                        <td>1000</td>
+                                                        <td>28-1-2026</td>
+                                                        <td>INV001</td>
+                                                        <td><button type="button"
+                                                                class="btn btn-sm btn-warning d-flex align-items-center justify-content-center"
+                                                                onclick="editRow(this)" data-ar="تعديل" data-en="Edit"
+                                                                title="Edit">
+                                                                تعديل
+                                                            </button></td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -2685,7 +2827,8 @@
                         <div class="col form-group">
                             <label class="form-label" for="paper-receipt" data-ar="الإيصال الورقي"
                                 data-en="Paper Receipt">الإيصال الورقي</label>
-                            <input type="text" class="form-control-sm form-control mb-3" id="paper-receipt" placeholder="">
+                            <input type="text" class="form-control-sm form-control mb-3" id="paper-receipt"
+                                placeholder="">
                         </div>
 
                     </form>
