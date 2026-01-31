@@ -426,10 +426,35 @@ select.addEventListener('change', function () {
 
 
 
-// ------------- Confirm Button (Dental) -------------
 
-// function confirmInvoice(button) {
-//     alert('Invoice confirmed!');
-//     button.disabled = true; // لتعطيل الزر بعد التأكيد
-//     button.innerText = 'Confirmed';
-// }
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const sessionType = document.getElementById('session_type');
+    const countSessionsDiv = document.getElementById('count_sessions').closest('.form-group');
+    const followSessionsCheckbox = document.getElementById('follow_sessions');
+    const availableSessionsDiv = document.getElementById('available_sessions').closest('.form-group');
+
+    // عند اختيار نوع الجلسة
+    sessionType.addEventListener('change', function() {
+        if (this.value !== "") {
+            countSessionsDiv.classList.remove('d-none');
+        } else {
+            countSessionsDiv.classList.add('d-none');
+            // إخفاء available sessions لو النوع لم يُختار
+            availableSessionsDiv.classList.add('d-none');
+            followSessionsCheckbox.checked = false;
+        }
+    });
+
+    // عند الضغط على Follow Sessions checkbox
+    followSessionsCheckbox.addEventListener('change', function() {
+        if (this.checked) {
+            availableSessionsDiv.classList.remove('d-none');
+        } else {
+            availableSessionsDiv.classList.add('d-none');
+        }
+    });
+});
+
