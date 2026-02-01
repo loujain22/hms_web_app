@@ -316,7 +316,7 @@
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="../dashboard/clinics.html"
                             data-bs-toggle="tooltip" data-bs-placement="right" data-title-ar="إعادة طباعة الفواتير"
-                            data-title-en="Reprint Invoices">
+                            data-title-en="Reprint Invoices" data-target="reprint-invoices">
                             <i class="icon">
                                 <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
                                     class="icon-20">
@@ -424,7 +424,7 @@
                                     data-en="BackOffice">BackOffice</a>
                             </div>
 
-                            <div class="dropdown d-flex align-items-center">
+                            <div class="dropdown d-flex  align-items-center">
                                 <a class="nav-link d-flex align-items-center p-0" href="#" id="navbarDropdown"
                                     role="button" data-bs-toggle="dropdown" aria-expanded="false">
 
@@ -444,9 +444,71 @@
                                         </svg>
                                     </i>
                                 </a>
-                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="../dashboard/auth/sign-in.html"
-                                            data-ar="تسجبل الخروج" data-en="Logout">تسجبل الخروج</a></li>
+                                <ul class="dropdown-menu dropdown-menu-end p-3 settings-dropdown"
+                                    aria-labelledby="navbarDropdown">
+
+                                    <!-- ===== Color Scheme ===== -->
+                                    <li>
+                                        <h5 class="mb-3">Scheme</h5>
+                                        <div class="d-flex justify-content-center gap-3 mb-4">
+                                            <div class="btn btn-border" data-setting="color-mode" data-name="color"
+                                                data-value="dark">
+                                                <svg class="icon-20" width="20" viewBox="0 0 24 24" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill="currentColor"
+                                                        d="M9,2C7.95,2 6.95,2.16 6,2.46C10.06,3.73 13,7.5 13,12C13,16.5 10.06,20.27 6,21.54C6.95,21.84 7.95,22 9,22A10,10 0 0,0 19,12A10,10 0 0,0 9,2Z" />
+                                                </svg>
+                                                <span class="ms-2 "> Dark </span>
+                                            </div>
+                                            <div class="btn btn-border active" data-setting="color-mode"
+                                                data-name="color" data-value="light">
+                                                <svg class="icon-20" width="20" viewBox="0 0 24 24" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill="currentColor"
+                                                        d="M12,8A4,4 0 0,0 8,12A4,4 0 0,0 12,16A4,4 0 0,0 16,12A4,4 0 0,0 12,8M12,18A6,6 0 0,1 6,12A6,6 0 0,1 12,6A6,6 0 0,1 18,12A6,6 0 0,1 12,18M20,8.69V4H15.31L12,0.69L8.69,4H4V8.69L0.69,12L4,15.31V20H8.69L12,23.31L15.31,20H20V15.31L23.31,12L20,8.69Z" />
+                                                </svg>
+                                                <span class="ms-2 "> Light</span>
+                                            </div>
+                                        </div>
+                                        <hr class="hr-horizontal">
+                                    </li>
+
+                                    <!-- ===== Direction & Language ===== -->
+                                    <li>
+                                        <div class="d-grid gap-3 grid-cols-2 mb-4">
+
+                                            <div class="text-center cursor-pointer" onclick="setLanguage('en')">
+                                                <img src="../assets/images/settings/dark/01.png" alt="ltr"
+                                                    class="mode dark-img img-fluid btn-border p-0 flex-column active mb-2"
+                                                    data-setting="dir-mode" data-name="dir" data-value="ltr">
+                                                <img src="../assets/images/settings/light/01.png" alt="ltr"
+                                                    class="mode light-img img-fluid btn-border p-0 flex-column active mb-2"
+                                                    data-setting="dir-mode" data-name="dir" data-value="ltr">
+                                                <span class=" mt-2"> LTR </span>
+                                            </div>
+
+                                            <div class="text-center cursor-pointer" onclick="setLanguage('ar')">
+                                                <img src="../assets/images/settings/dark/02.png" alt=""
+                                            class="mode dark-img img-fluid btn-border p-0 flex-column mb-2"
+                                            data-setting="dir-mode" data-name="dir" data-value="rtl">
+                                        <img src="../assets/images/settings/light/02.png" alt=""
+                                            class="mode light-img img-fluid btn-border p-0 flex-column mb-2"
+                                            data-setting="dir-mode" data-name="dir" data-value="rtl">
+                                        <span class="mt-2 "> RTL </span>
+                                            </div>
+
+                                        </div>
+
+                                        <hr class="hr-horizontal">
+                                    </li>
+
+                                    <!-- ===== Logout ===== -->
+                                    <li>
+                                        <a class="dropdown-item" href="../dashboard/auth/sign-in.html"
+                                            data-ar="تسجيل الخروج" data-en="Logout">
+                                            تسجيل الخروج
+                                        </a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -532,7 +594,7 @@
                                                         الحجز</label>
                                                     <input type="text"
                                                         class="form-control-sm form-control mb-3 date_flatpicker"
-                                                        placeholder="2026-01-28" id="reservation_date">
+                                                        placeholder="" id="reservation_date">
                                                 </div>
 
                                                 <div class="col-12 col-md form-group">
@@ -835,7 +897,7 @@
                                                         الحجز</label>
                                                     <input type="text"
                                                         class="form-control-sm form-control mb-3 date_flatpicker"
-                                                        placeholder="2026-01-28" id="reservation_date">
+                                                        placeholder="" id="reservation_date">
                                                 </div>
 
                                                 <div class="col-12 col-md form-group">
@@ -2089,7 +2151,8 @@
                                                         <td>500</td>
                                                         <td>300</td>
                                                         <td>200</td>
-                                                        <td><button class="confirm-btn" data-bs-toggle="modal"
+                                                        <td><button class="btn btn-sm btn-outline-primary"
+                                                                data-bs-toggle="modal"
                                                                 data-bs-target="#payDentalProcedureModal"
                                                                 data-ar="تأكيد" data-en="Confirm">Confirm</button></td>
                                                     </tr>
@@ -2101,7 +2164,8 @@
                                                         <td>1200</td>
                                                         <td>1200</td>
                                                         <td>0</td>
-                                                        <td><button class="confirm-btn" data-bs-toggle="modal"
+                                                        <td><button class="btn btn-sm btn-outline-primary"
+                                                                data-bs-toggle="modal"
                                                                 data-bs-target="#payDentalProcedureModal"
                                                                 data-ar="تأكيد" data-en="Confirm">Confirm</button></td>
                                                     </tr>
@@ -2113,8 +2177,8 @@
                                                         <td>800</td>
                                                         <td>500</td>
                                                         <td>300</td>
-                                                        <td><button class="confirm-btn" data-ar="تأكيد"
-                                                                data-bs-toggle="modal"
+                                                        <td><button class="btn btn-sm btn-outline-primary"
+                                                                data-ar="تأكيد" data-bs-toggle="modal"
                                                                 data-bs-target="#payDentalProcedureModal"
                                                                 data-en="Confirm">Confirm</button></td>
                                                     </tr>
@@ -2126,8 +2190,8 @@
                                                         <td>1500</td>
                                                         <td>1000</td>
                                                         <td>500</td>
-                                                        <td><button class="confirm-btn" data-ar="تأكيد"
-                                                                data-bs-toggle="modal"
+                                                        <td><button class="btn btn-sm btn-outline-primary"
+                                                                data-ar="تأكيد" data-bs-toggle="modal"
                                                                 data-bs-target="#payDentalProcedureModal"
                                                                 data-en="Confirm">Confirm</button></td>
                                                     </tr>
@@ -2139,8 +2203,8 @@
                                                         <td>700</td>
                                                         <td>700</td>
                                                         <td>0</td>
-                                                        <td><button class="confirm-btn" data-ar="تأكيد"
-                                                                data-bs-toggle="modal"
+                                                        <td><button class="btn btn-sm btn-outline-primary"
+                                                                data-ar="تأكيد" data-bs-toggle="modal"
                                                                 data-bs-target="#payDentalProcedureModal"
                                                                 data-en="Confirm"> Confirm </button></td>
                                                     </tr>
@@ -2544,9 +2608,9 @@
                                                 <td>1500</td>
                                                 <td>1000</td>
                                                 <td>500</td>
-                                                <td> <button class="confirm-btn" data-bs-toggle="modal"
-                                                        data-bs-target="#paidAmountModal" data-ar="تأكيد"
-                                                        data-en="Confirm">Confirm</button></td>
+                                                <td> <button class="btn btn-sm btn-outline-primary"
+                                                        data-bs-toggle="modal" data-bs-target="#paidAmountModal"
+                                                        data-ar="تأكيد" data-en="Confirm">Confirm</button></td>
                                             </tr>
                                             <tr>
                                                 <td><input class="form-check-input" type="checkbox" value=""></td>
@@ -2556,9 +2620,9 @@
                                                 <td>2500</td>
                                                 <td>1500</td>
                                                 <td>1000</td>
-                                                <td> <button class="confirm-btn" data-bs-toggle="modal"
-                                                        data-bs-target="#paidAmountModal" data-ar="تأكيد"
-                                                        data-en="Confirm">Confirm</button></td>
+                                                <td> <button class="btn btn-sm btn-outline-primary"
+                                                        data-bs-toggle="modal" data-bs-target="#paidAmountModal"
+                                                        data-ar="تأكيد" data-en="Confirm">Confirm</button></td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -2805,6 +2869,110 @@
                                             </div>
                                         </form>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="page" id="reprint-invoices">
+
+                <select id="patient" class="form-select-sm form-select mb-3 shadow-none d-none">
+                    <option selected data-ar="إختار المريض" data-en="Select patient">إختار المريض</option>
+                    <option value="1" data-ar="خالد عمر" data-en="Khalid Omer">
+                        خالد
+                        عمر</option>
+                    <option value="2" data-ar="ألاء أحمد" data-en="Alaa Ahmed">
+                        ألاء
+                        أحمد</option>
+                    <option value="3" data-ar="ياسمين حسام" data-en="Yasmeen Hossam">ياسمين حسام</option>
+                </select>
+
+
+                <div class="col-md-12 col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <form>
+                                <div class="row">
+
+                                    <!-- اسم المريض -->
+                                    <div class="col-md-6">
+                                        <label class="form-label" data-ar="إسم المريض" data-en="Patient Name">
+                                            اسم المريض
+                                        </label>
+
+                                        <select id="cancel_patient" class="form-select-sm form-select mb-3 shadow-none">
+                                            <option selected data-ar="إخار المريض" data-en="Select patient">إختر
+                                                المريض</option>
+                                            <option value="1" data-ar="خالد عمر" data-en="Khalid Omer">
+                                                خالد
+                                                عمر</option>
+                                            <option value="2" data-ar="ألاء أحمد" data-en="Alaa Ahmed">
+                                                ألاء
+                                                أحمد</option>
+                                            <option value="3" data-ar="ياسمين حسام" data-en="Yasmeen Hossam">ياسمين حسام
+                                            </option>
+                                        </select>
+                                    </div>
+
+                                    <!-- الإيصال الورقي -->
+
+                                    <div class="col-md-6 form-group">
+                                        <label class="form-label" for="exampleInputText6" data-ar="التاريخ"
+                                            data-en="Date">التاريخ</label>
+                                        <input type="text" class="form-control-sm form-control mb-3 date_flatpicker"
+                                            placeholder="" id="print_date">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12 col-lg-12">
+                        <div class="card">
+                            <div class="card-header header-grid">
+                                <!-- Title -->
+                                <h4 class="card-title m-0" data-ar="طباعة الفواتير" data-en="Print Invoices">
+                                    طباعة الفواتير
+                                </h4>
+                            </div>
+                            <div class="card-body p-0">
+                                <div class="table-responsive mt-4">
+                                    <table id="reservation-invoices" class="table table-striped mb-0" role="grid">
+                                        <thead>
+                                            <tr>
+                                                <th><input class="form-check-input" type="checkbox" value="" id=""></th>
+                                                <th data-ar="الرقم" data-en="No.">الرقم</th>
+                                                <th data-ar="فاتورة المبيعات" data-en="Sales Invoice">فاتورة
+                                                    المبيعات </th>
+                                                <th data-ar="رقم الفاتورة" data-en="Invoice Number">رقم الفاتورة</th>
+                                                <th data-ar="الإجمالي الكلي" data-en="Total *">الإجمالي الكلي</th>
+                                                <th data-ar="المبلغ المدفوع" data-en="Paid Amount">المبلغ المدفوع</th>
+                                                <th data-ar="العناصر" data-en="Items">العناصر</th>
+                                                <th data-ar="طباعة" data-en="Print">طباعة</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><input class="form-check-input" type="checkbox"></td>
+                                                <td>1</td>
+                                                <td>مبيعات</td>
+                                                <td>INV-2024-001</td>
+                                                <td>2,500 ج.م</td>
+                                                <td>2,000 ج.م</td>
+                                                <td>5 عناصر</td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-primary">
+                                                        طباعة
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
