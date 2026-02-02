@@ -990,3 +990,11 @@ h4 {
     color: #1A9A8D !important;
     background: none !important;
 }
+
+
+
+.logo-img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+}

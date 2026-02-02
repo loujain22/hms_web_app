@@ -1,10 +1,4 @@
 
-// document.addEventListener('DOMContentLoaded', function () {
-//     flatpickr(".date_flatpicker", {
-//         dateFormat: "Y-m-d", // صيغة التاريخ
-//         allowInput: true
-//     });
-// });
 
 // document.querySelectorAll('.page').forEach(page => {
 //   const checkbox = page.querySelector('#health_insurance');
@@ -22,26 +16,24 @@
 
 
 //--------- Auto Scroll Down -----------
-document.addEventListener('DOMContentLoaded', function () {
-    const checkbox = document.getElementById('health_insurance');
-    const formGroup = document.getElementById('health_insurance_Section');
 
-    checkbox.addEventListener('change', function () {
-        if (this.checked) {
-            formGroup.classList.remove('d-none');
-            scrollToSection();
-        } else {
-            formGroup.classList.add('d-none');
-        }
+// document.addEventListener('DOMContentLoaded', function () {
+//     const checkbox = document.getElementById('health_insurance');
+//     const formGroup = document.getElementById('health_insurance_Section');
 
-    });
-});
+//     checkbox.addEventListener('change', function () {
+//         if (this.checked) {
+//             formGroup.classList.remove('d-none');
+//             scrollToSection();
+//         } else {
+//             formGroup.classList.add('d-none');
+//         }
 
-function scrollToSection() {
-    document.getElementById("mediacal_insurance").scrollIntoView({
-        behavior: "smooth"
-    });
-}
+//     });
+// });
+
+
+
 
 
 //------ Scroll Up ------------
@@ -74,22 +66,48 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-// ------------------ Health Insurance ---------------
+// ------------------ Health Insurance & Auto Scroll Dawon ---------------
+
 
 document.querySelectorAll('.page').forEach(page => {
-    const checkbox = page.querySelector('#health_insurance');
+
+    const checkbox = page.querySelector('.health_insurance_auto_scroll');
     const sections = page.querySelectorAll('.health_insurance_Section');
+    const scrollTarget = page.querySelector('.mediacal_insurance_auto_scroll');
 
     if (!checkbox || sections.length === 0) return;
 
     checkbox.addEventListener('change', function () {
+
         sections.forEach(section => {
             section.classList.toggle('d-none', !this.checked);
         });
 
-        scrollToSection();
+        // scroll فقط عند التفعيل
+        if (this.checked && scrollTarget) {
+            scrollTarget.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
     });
 });
+
+
+// document.querySelectorAll('.page').forEach(page => {
+//     const checkbox = page.querySelector('#health_insurance');
+//     const sections = page.querySelectorAll('.health_insurance_Section');
+
+//     if (!checkbox || sections.length === 0) return;
+
+//     checkbox.addEventListener('change', function () {
+//         sections.forEach(section => {
+//             section.classList.toggle('d-none', !this.checked);
+//         });
+
+//         scrollToSection();
+//     });
+// });
 
 
 
