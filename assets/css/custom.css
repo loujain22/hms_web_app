@@ -147,7 +147,7 @@ hr {
 
 .type {
   position: absolute;
-  background: #3a57e8;
+  background: #014b4f;
   padding: 9px 25px;
   color: #ffffff;
   top: -15px;
@@ -181,7 +181,7 @@ hr {
 }
 
 .prc-box.active {
-  background: #3a57e8;
+  background: #014b4f;
 }
 
 .prc-box.active .h3 {
@@ -208,8 +208,8 @@ hr {
 }
 
 .child-cell.active {
-  color: #3a57e8;
-  stroke: #3a57e8;
+  color: #014b4f;
+  stroke: #014b4f;
 }
 
 .line-around {
@@ -355,7 +355,7 @@ hr {
 .bd-aside .active {
   font-weight: 600;
   background-color: rgba(58, 87, 232, 0.1);
-  color: #3a57e8;
+  color: #014b4f;
 }
 
 .bd-aside .btn {
@@ -376,12 +376,12 @@ hr {
 .bd-aside .btn:hover,
 .bd-aside .btn:focus {
   background-color: rgba(58, 87, 232, 0.1);
-  color: #3a57e8;
+  color: #014b4f;
 }
 
 .bd-aside .btn:focus {
-  -webkit-box-shadow: 0 0 0 0.063rem rgba(58, 87, 232, 0.7);
-  box-shadow: 0 0 0 0.063rem rgba(58, 87, 232, 0.7);
+  -webkit-box-shadow: 0 0 0 0.063rem #014b4f;
+  box-shadow: 0 0 0 0.063rem #014b4f;
 }
 
 .bd-aside .btn[aria-expanded=true] .right-icon {
@@ -998,3 +998,83 @@ h4 {
     height: 30px;
     object-fit: contain;
 }
+
+
+/* ===================== Login ============== */
+
+#login-btn{
+  margin-top: 32px;
+}
+
+
+.login-logo-img {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+}
+
+
+
+
+/* Outer green box with margin */
+.login-side-box {
+  background-color: #0799A1;
+  height: 100%;
+  border-radius: 16px;
+  padding: 48px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Text section (top – not centered) */
+.login-side-text {
+  color: #ffffff;
+  max-width: 420px;
+}
+
+.login-side-text h2 {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: 16px;
+  color: #ffffff;
+}
+
+.login-side-text p {
+  font-size: 16px;
+  opacity: 0.9;
+  line-height: 1.6;
+}
+
+/* Image centered */
+.login-side-image {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Bigger image */
+.login-side-image img {
+  max-width: 90%;
+  height: auto;
+}
+
+
+.language-dropdown select {
+    padding: 5px 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+
+.language-dropdown {
+    position: absolute;
+    top: 20px;
+    z-index: 1000;
+    /* لا تحددي right أو left هنا */
+}
+

@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <title>Track HMS</title>
+
+
+   <!-- Favicon -->
+   <link rel="shortcut icon" href="../assets/images/track-logo.png">
+
+   <!-- Library / Plugin Css Build -->
+   <link rel="stylesheet" href="../assets/css/core/libs.min.css">
+
+
+   <!-- Hope Ui Design System Css -->
+   <link rel="stylesheet" href="../assets/css/hope-ui.css?v=4.0.0">
+
+   <!-- Custom Css -->
+   <link rel="stylesheet" href="../assets/css/custom.css?v=4.0.0">
+
+   <!-- Dark Css -->
+   <link rel="stylesheet" href="../assets/css/dark.min.css">
+
+   <!-- Customizer Css -->
+   <link rel="stylesheet" href="../assets/css/customizer.css">
+
+   <!-- RTL Css -->
+   <link rel="stylesheet" href="../assets/css/rtl.css">
+
+
+</head>
+
+<body class=" " data-bs-spy="scroll" data-bs-target="#elements-section" data-bs-offset="0" tabindex="0">
+   <!-- loader Start -->
+   <div id="loading">
+      <div class="loader simple-loader">
+         <div class="loader-body">
+         </div>
+      </div>
+   </div>
+   <!-- loader END -->
+
+   <div class="wrapper">
+      <section class="login-content">
+         <div class="row m-0 align-items-center bg-white vh-100">
+            <div class="col-md-6">
+               <!-- Language Selector Dropdown -->
+               <!-- Language Selector Dropdown -->
+               <div class="language-dropdown text-end p-3 position-absolute">
+                  <select id="languageSelect" class="form-select w-auto" onchange="setLanguage(this.value)">
+                     <option value="en">English</option>
+                     <option value="ar">العربية</option>
+                  </select>
+               </div>
+               <div class="row justify-content-center">
+                  <div class="col-md-10">
+                     <div class="card card-transparent shadow-none d-flex justify-content-center mb-0 auth-card">
+                        <div class="card-body">
+                           <div class="navbar-brand d-flex flex-column align-items-center mb-4 text-center w-100">
+
+                              <!-- Logo -->
+                              <div class="logo-main mb-2">
+                                 <div class="logo-normal">
+                                    <img src="../assets/images/track-logo.png" alt="Trck HMS Logo"
+                                       class="login-logo-img">
+                                 </div>
+                              </div>
+                              <!-- Name -->
+                              <!-- <h4 class="logo-title mb-0">Trck HMS</h4> -->
+
+                           </div>
+                           <h3 class="mb-2 text-center" data-ar="تسجيل الدخول" data-en="Login">Login</h3>
+                           <p class="text-center" data-ar="مرحبًا بعودتك! الرجاء تسجيل الدخول للمتابعة."
+                              data-en="Welcome back! Please sign in to continue.">Welcome back! Please sign in to
+                              continue.</p>
+                           <form>
+                              <div class="row">
+                                 <div class="col-lg-12">
+                                    <div class="form-group">
+                                       <label for="email" class="form-label" data-ar="البريد الإلكتروني"
+                                          data-en="Email">Email</label>
+                                       <input type="email" class="form-control" id="email" aria-describedby="email"
+                                          placeholder=" ">
+                                    </div>
+                                 </div>
+                                 <div class="col-lg-12">
+                                    <div class="form-group">
+                                       <label for="password" class="form-label" data-ar="كلمة المرور"
+                                          data-en="Passwprd">Password</label>
+                                       <input type="password" class="form-control" id="password"
+                                          aria-describedby="password" placeholder=" ">
+                                    </div>
+                                 </div>
+                                 <div class="col-lg-12 d-flex justify-content-between">
+                                    <div class="form-check mb-3">
+                                       <input type="checkbox" class="form-check-input" id="customCheck1">
+                                       <label class="form-check-label" for="customCheck1" data-ar="هل تتزكرني"
+                                          data-en="Remember Me">Remember Me</label>
+                                    </div>
+                                    <a href="recoverpw.html" data-ar="نسيت كلمة المرور؟"
+                                       data-en="Forgot Password?">Forgot Password?</a>
+                                 </div>
+                              </div>
+                              <div class="d-flex justify-content-center" id="login-btn">
+                                 <button type="submit" class="btn btn-primary btn-b w-100" data-ar="تسجيل الدخول"
+                                    data-en="Login">
+                                    Login
+                                 </button>
+                              </div>
+                           </form>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <!-- <div class="sign-bg">
+                  <svg width="280" height="230" viewBox="0 0 431 398" fill="none" xmlns="http://www.w3.org/2000/svg">
+                     <g opacity="0.05">
+                        <rect x="-157.085" y="193.773" width="543" height="77.5714" rx="38.7857"
+                           transform="rotate(-45 -157.085 193.773)" fill="#3B8AFF" />
+                        <rect x="7.46875" y="358.327" width="543" height="77.5714" rx="38.7857"
+                           transform="rotate(-45 7.46875 358.327)" fill="#3B8AFF" />
+                        <rect x="61.9355" y="138.545" width="310.286" height="77.5714" rx="38.7857"
+                           transform="rotate(45 61.9355 138.545)" fill="#3B8AFF" />
+                        <rect x="62.3154" y="-190.173" width="543" height="77.5714" rx="38.7857"
+                           transform="rotate(45 62.3154 -190.173)" fill="#3B8AFF" />
+                     </g>
+                  </svg>
+               </div> -->
+            </div>
+            <div class="col-md-6 d-md-block d-none p-4 vh-100">
+               <div class="login-side login-side-box">
+
+                  <!-- Text -->
+                  <div class="login-side-text">
+                     <h2 id="loginTitle" data-ar="إدارة عيادتك|بذكاء وسرعة"
+                        data-en="Manage Your Clinic|Smarter & Faster">
+                     </h2>
+                     <p data-ar="نظام متكامل لإدارة العيادة للتعامل مع المرضى، والمواعيد، والفواتير — كل ذلك في مكان واحد."
+                        data-en=" A complete clinic management system to handle patients,
+                        appointments, and billing — all in one place.">
+                        A complete clinic management system to handle patients,
+                        appointments, and billing — all in one place.
+                     </p>
+                  </div>
+
+                  <!-- Image -->
+                  <div class="login-side-image">
+                     <img src="../assets/images/login-img.png" alt="Clinic Management System">
+                  </div>
+
+               </div>
+            </div>
+         </div>
+      </section>
+   </div>
+
+   <!-- Library Bundle Script -->
+   <script src="../assets/js/core/libs.min.js"></script>
+
+   <!-- External Library Bundle Script -->
+   <script src="../assets/js/core/external.min.js"></script>
+
+   <!-- Widgetchart Script -->
+   <script src="../assets/js/charts/widgetcharts.js"></script>
+
+   <!-- mapchart Script -->
+   <script src="../assets/js/charts/vectore-chart.js"></script>
+   <script src="../assets/js/charts/dashboard.js"></script>
+
+   <!-- fslightbox Script -->
+   <script src="../assets/js/plugins/fslightbox.js"></script>
+
+   <!-- Settings Script -->
+   <script src="../assets/js/plugins/setting.js"></script>
+
+   <!-- Slider-tab Script -->
+   <script src="../assets/js/plugins/slider-tabs.js"></script>
+
+   <!-- Form Wizard Script -->
+   <script src="../assets/js/plugins/form-wizard.js"></script>
+
+   <!-- AOS Animation Plugin-->
+
+   <!-- App Script -->
+   <script src="../assets/js/hope-ui.js" defer></script>
+
+   <!-- Language Script -->
+   <script src="../assets/js/lang.js"></script>
+
+
+</body>
+
+</html>

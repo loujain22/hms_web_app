@@ -14,6 +14,12 @@ function setLanguage(lang) {
     document.documentElement.lang = 'en';
   }
 
+  const el = document.getElementById('loginTitle');
+  const text = el.getAttribute(`data-${lang}`);
+  
+  // استخدمنا | كفاصل بين السطرين
+  el.innerHTML = text.replace('|', '<br>');
+
   // حفظ اللغة
   localStorage.setItem('lang', lang);
 }
@@ -24,3 +30,29 @@ document.addEventListener('DOMContentLoaded', function () {
   const savedLang = localStorage.getItem('lang') || 'ar'; // الافتراضي عربي
   setLanguage(savedLang);
 });
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  const savedLang = localStorage.getItem('lang') || 'ar'; // الافتراضي عربي
+  setLanguage(savedLang);
+
+  // تحديث قيمة Dropdown حسب اللغة المحفوظة
+  const languageSelect = document.getElementById('languageSelect');
+  if(languageSelect){
+      languageSelect.value = savedLang;
+  }
+});
+
+// تغيير موقع Dropdown حسب الاتجاه
+const langDropdown = document.querySelector('.language-dropdown');
+if(langDropdown){
+    if(lang === 'ar'){
+        langDropdown.style.left = '20px';
+        langDropdown.style.right = 'auto';
+    } else {
+        langDropdown.style.right = '20px';
+        langDropdown.style.left = 'auto';
+    }
+}
+
+
