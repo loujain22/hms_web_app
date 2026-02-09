@@ -75,22 +75,28 @@
                            <p class="text-center" data-ar="مرحبًا بعودتك! الرجاء تسجيل الدخول للمتابعة."
                               data-en="Welcome back! Please sign in to continue.">Welcome back! Please sign in to
                               continue.</p>
-                           <form>
+                           <form class="needs-validation" novalidate>
                               <div class="row">
                                  <div class="col-lg-12">
-                                    <div class="form-group">
+                                    <div class="form-group has-validation">
                                        <label for="email" class="form-label" data-ar="البريد الإلكتروني"
                                           data-en="Email">Email</label>
                                        <input type="email" class="form-control" id="email" aria-describedby="email"
-                                          placeholder=" ">
+                                          placeholder=" " required>
+                                       <div class="invalid-feedback" data-ar=".من فضلك أدخل البريد الإلكتروني" data-en="Please enter email address.">
+                                          Please choose a email.
+                                       </div>
                                     </div>
                                  </div>
                                  <div class="col-lg-12">
-                                    <div class="form-group">
+                                    <div class="form-group has-validation">
                                        <label for="password" class="form-label" data-ar="كلمة المرور"
                                           data-en="Passwprd">Password</label>
                                        <input type="password" class="form-control" id="password"
-                                          aria-describedby="password" placeholder=" ">
+                                          aria-describedby="password" placeholder=" " required>
+                                       <div class="invalid-feedback" data-ar=".من فضلك أدخل كلمة المرور" data-en="Please enter password.">
+                                          Please choose a password.
+                                       </div>
                                     </div>
                                  </div>
                                  <div class="col-lg-12 d-flex justify-content-between">
