@@ -1,5 +1,4 @@
 function setLanguage(lang) {
-
   // تغيير النصوص
   document.querySelectorAll('[data-ar]').forEach(el => {
     el.textContent = el.getAttribute(`data-${lang}`);
@@ -14,45 +13,42 @@ function setLanguage(lang) {
     document.documentElement.lang = 'en';
   }
 
+  // تغيير محاذاة النصوص تلقائيًا (مثال للhero-center)
+  document.querySelectorAll('.hero-center').forEach(el => {
+    el.style.textAlign = lang === 'ar' ? 'right' : 'left';
+  });
+
+  // تغيير موقع Dropdown حسب الاتجاه
+  const langDropdown = document.querySelector('.language-dropdown');
+  if (langDropdown) {
+    if (lang === 'ar') {
+      langDropdown.style.left = '20px';
+      langDropdown.style.right = 'auto';
+    } else {
+      langDropdown.style.right = '20px';
+      langDropdown.style.left = 'auto';
+    }
+  }
+
+  // مثال: تغيير loginTitle
   const el = document.getElementById('loginTitle');
-  const text = el.getAttribute(`data-${lang}`);
-  
-  // استخدمنا | كفاصل بين السطرين
-  el.innerHTML = text.replace('|', '<br>');
+  if(el){
+      const text = el.getAttribute(`data-${lang}`);
+      el.innerHTML = text.replace('|', '<br>');
+  }
 
   // حفظ اللغة
   localStorage.setItem('lang', lang);
 }
 
-
 // عند تحميل الصفحة
 document.addEventListener('DOMContentLoaded', function () {
   const savedLang = localStorage.getItem('lang') || 'ar'; // الافتراضي عربي
   setLanguage(savedLang);
-});
 
-
-document.addEventListener('DOMContentLoaded', function () {
-  const savedLang = localStorage.getItem('lang') || 'ar'; // الافتراضي عربي
-  setLanguage(savedLang);
-
-  // تحديث قيمة Dropdown حسب اللغة المحفوظة
+  // تحديث Dropdown إذا موجود
   const languageSelect = document.getElementById('languageSelect');
   if(languageSelect){
       languageSelect.value = savedLang;
   }
 });
-
-// تغيير موقع Dropdown حسب الاتجاه
-const langDropdown = document.querySelector('.language-dropdown');
-if(langDropdown){
-    if(lang === 'ar'){
-        langDropdown.style.left = '20px';
-        langDropdown.style.right = 'auto';
-    } else {
-        langDropdown.style.right = '20px';
-        langDropdown.style.left = 'auto';
-    }
-}
-
-
