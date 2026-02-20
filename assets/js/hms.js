@@ -198,6 +198,57 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+
+// document.addEventListener("DOMContentLoaded", function () {
+//     const sidebarLinks = document.querySelectorAll('.sidebar .nav-link[data-target]');
+//     const pages = document.querySelectorAll('.page');
+
+//     function showPage(pageId) {
+//         pages.forEach(page => {
+//             page.style.display = (page.id === pageId) ? 'block' : 'none';
+//         });
+
+//         sessionStorage.setItem('currentPage', pageId);
+//     }
+
+//     sidebarLinks.forEach(link => {
+//         link.addEventListener('click', function (e) {
+//             e.preventDefault();
+
+//             sidebarLinks.forEach(l => l.classList.remove('active'));
+//             this.classList.add('active');
+
+//             const target = this.dataset.target;
+//             if (target) {
+//                 showPage(target);
+//             }
+//         });
+//     });
+
+//     const savedPage = sessionStorage.getItem('currentPage');
+//     const defaultPage = document.body.dataset.defaultPage;
+
+//     if (savedPage && document.getElementById(savedPage)) {
+//         showPage(savedPage);
+
+//         sidebarLinks.forEach(link => {
+//             if (link.dataset.target === savedPage) {
+//                 link.classList.add('active');
+//             }
+//         });
+//     } 
+//     else if (defaultPage && document.getElementById(defaultPage)) {
+//         showPage(defaultPage);
+
+//         sidebarLinks.forEach(link => {
+//             if (link.dataset.target === defaultPage) {
+//                 link.classList.add('active');
+//             }
+//         });
+//     }
+// });
+
+
 document.addEventListener("DOMContentLoaded", function () {
     const sidebarLinks = document.querySelectorAll('.sidebar .nav-link[data-target]');
     const pages = document.querySelectorAll('.page');

@@ -1080,3 +1080,8 @@ h4 {
 
 
 
+/* ====================== Laboratory Screen =================== */
+
+#observationDetailsWrapper {
+    display: none;
+}
