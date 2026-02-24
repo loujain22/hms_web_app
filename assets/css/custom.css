@@ -1115,6 +1115,26 @@ h4 {
   z-index: 9999;
 }
 
+.tag-edit {
+  background: #ecdfc6;
+  color: #905b00;
+  padding: 12px 28px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  min-width: 90px;
+  width: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  cursor: pointer !important;
+  pointer-events: auto !important;
+  position: relative;
+  z-index: 9999;
+}
+
 
 textarea {
   resize: none;
