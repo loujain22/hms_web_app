@@ -280,7 +280,7 @@ select.addEventListener('change', function () {
 });
 
 
-/* ===================================================== */
+/* ======================= Input Result Tab  ============================== */
 
 
 
@@ -334,7 +334,7 @@ document.addEventListener('click', function (e) {
 
 /* ========================= Texteditor (Input-Result) ====================== */
 
-var quill = new Quill('#editor', {
+var quill = new Quill('#custom_result', {
     theme: 'snow'
 });
 
@@ -356,3 +356,60 @@ editCheckbox.addEventListener('change', function () {
         oldTests.classList.remove('d-none'); // أظهر القديم
     }
 });
+
+
+
+
+/* ======================= Print Result Tab  ============================== */
+
+
+
+const printResultPatientSelect = document.querySelector('.print-patient');
+
+const printResultMobileField = document.getElementById('print-result-mobile');
+const printResultGenderField = document.getElementById('print-result-gender');
+const printResultEditSection = document.getElementById('reprint-section');
+const printResultTestsSection = document.getElementById('print-result-tests-section');
+
+
+printResultPatientSelect.addEventListener('change', function () {
+    if (this.value) {
+        printResultMobileField.classList.remove('d-none');
+        printResultGenderField.classList.remove('d-none');
+        printResultEditSection.classList.remove('d-none');
+        printResultTestsSection.classList.remove('d-none');
+    } else {
+        printResultMobileField.classList.add('d-none');
+        printResultGenderField.classList.add('d-none');
+        printResultEditSection.classList.add('d-none');
+        printResultTestsSection.classList.add('d-none');
+    }
+});
+
+
+
+document.addEventListener('click', function (e) {
+
+    const tag = e.target.closest('.tag');
+    if (!tag) return;
+
+   
+
+    const testOptionsSection = document.getElementById('print-result-test-options-section');
+    const dataTableSection = document.getElementById('print-result-datatable');
+    const printTextfieldSection = document.getElementById('print-result-textfield');
+
+    if (!testOptionsSection || !dataTableSection) {
+        console.error('❌ Section not found');
+        return;
+    }
+
+    testOptionsSection.classList.remove('d-none');
+    dataTableSection.classList.remove('d-none');
+    printTextfieldSection.classList.remove('d-none');
+
+    console.log('✅ Tag clicked:', tag.innerText);
+});
+
+
+
