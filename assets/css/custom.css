@@ -924,85 +924,85 @@ h4 {
 /* --------------- Confirm Button (Dental) --------------- */
 
 .confirm-btn {
-    background-color: #079aa2;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 4px;
-    cursor: pointer;
+  background-color: #079aa2;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 .confirm-btn:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 
 
- /* ================= dropdown Menu ================= */
+/* ================= dropdown Menu ================= */
 
 /* عرض القائمة */
 .settings-dropdown {
-    width: 320px;
+  width: 320px;
 }
 
 /* أزرار الـ scheme */
 .scheme-btn {
-    width: 48px;
-    height: 48px;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 12px;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
 }
 
 /* حجم الأيقونات */
 .icon-24 {
-    width: 24px;
-    height: 24px;
+  width: 24px;
+  height: 24px;
 }
 
 /* الحالة النشطة */
 .scheme-btn.active {
-    background-color: var(--bs-primary);
-    color: #fff;
+  background-color: var(--bs-primary);
+  color: #fff;
 }
 
 /* Hover */
 .scheme-btn:hover {
-    transform: scale(1.05);
-    transition: 0.2s ease;
+  transform: scale(1.05);
+  transition: 0.2s ease;
 }
 
 
 .dropdown-menu .dropdown-item:hover {
-    color: #1A9A8D;
-    background-color: transparent;
+  color: #1A9A8D;
+  background-color: transparent;
 }
 
 
 .dropdown-menu .dropdown-item {
-    transition: color 0.2s ease;
+  transition: color 0.2s ease;
 }
 
 .dropdown-menu .dropdown-item:hover {
-    color: #1A9A8D !important;
-    background: none !important;
+  color: #1A9A8D !important;
+  background: none !important;
 }
 
 
 
 .logo-img {
-    width: 30px;
-    height: 30px;
-    object-fit: contain;
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
 }
 
 
 /* ===================== Login ============== */
 
-#login-btn{
+#login-btn {
   margin-top: 32px;
 }
 
@@ -1062,20 +1062,20 @@ h4 {
 
 
 .language-dropdown select {
-    padding: 5px 12px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    background-color: #fff;
-    font-weight: 500;
-    cursor: pointer;
+  padding: 5px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  font-weight: 500;
+  cursor: pointer;
 }
 
 
 .language-dropdown {
-    position: absolute;
-    top: 20px;
-    z-index: 1000;
-    /* لا تحددي right أو left هنا */
+  position: absolute;
+  top: 20px;
+  z-index: 1000;
+  /* لا تحددي right أو left هنا */
 }
 
 
@@ -1083,5 +1083,45 @@ h4 {
 /* ====================== Laboratory Screen =================== */
 
 #observationDetailsWrapper {
-    display: none;
+  display: none;
+}
+
+
+.tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  position: relative;
+  z-index: 9999;
+}
+
+.tag {
+  background: #b3e0e2;
+  color: #014144;
+  padding: 12px 28px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  min-width: 90px;
+  width: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  cursor: pointer !important;
+  pointer-events: auto !important;
+  position: relative;
+  z-index: 9999;
+}
+
+
+textarea {
+  resize: none;
+  direction: rtl;
+}
+
+.tox,
+.tox * {
+  writing-mode: horizontal-tb !important;
 }

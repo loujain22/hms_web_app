@@ -34,6 +34,9 @@
     <link rel="stylesheet" href="../assets/vendor/flatpickr/dist/flatpickr.min.css">
 
 
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+
+
 </head>
 
 <body class="  ">
@@ -350,8 +353,6 @@
 
 
             <div class="page" id="laboratory-tool">
-
-
                 <div id="observationDetailsWrapper">
                     <div class="row">
                         <div class="col-md-12 col-lg-12">
@@ -444,17 +445,17 @@
                                                        </textarea>
                                                         </div> -->
 
-                                                      <label data-ar="ملاحظات" data-en="Observation">ملاحظات</label>
-                                                    <div class="multi-select-container">
-                                                        <div id="selectedItems" class="selected-items"></div>
-                                                        <select id="observation" class="form-select">
-                                                            <option value="">إختر الملاحظة</option>
-                                                            <option value="1">الملاحظة 1</option>
-                                                            <option value="2">الملاحظة 2</option>
-                                                            <option value="3">الملاحظة 3</option>
-                                                            <option value="4">الملاحظة 4</option>
-                                                        </select>
-                                                    </div>
+                                                        <label data-ar="ملاحظات" data-en="Observation">ملاحظات</label>
+                                                        <div class="multi-select-container">
+                                                            <div id="selectedItems" class="selected-items"></div>
+                                                            <select id="observation" class="form-select">
+                                                                <option value="">إختر الملاحظة</option>
+                                                                <option value="1">الملاحظة 1</option>
+                                                                <option value="2">الملاحظة 2</option>
+                                                                <option value="3">الملاحظة 3</option>
+                                                                <option value="4">الملاحظة 4</option>
+                                                            </select>
+                                                        </div>
                                                     </div>
 
 
@@ -646,14 +647,14 @@
 
             <div class="page" id="input-result">
                 <div class="row">
-                    <div class="col-md-12 col-lg-8">
+                    <div class="col-md-12 col-lg-12">
                         <div class="row">
                             <div class="col-md-12 col-lg-12">
                                 <div class="overflow-hidden card" data-aos="fade-up" data-aos-delay="600">
                                     <div class="card-body">
                                         <form>
                                             <div class="row">
-                                                <div class="col-12 col-md form-group">
+                                                <div class="col-md-4 col-lg- form-group">
                                                     <label class="form-label" data-ar="المريض *"
                                                         data-en="Patient *">المريض
                                                         *</label>
@@ -672,105 +673,36 @@
                                                             <option value="3" data-ar="ياسمين حسام"
                                                                 data-en="Yasmeen Hossam">ياسمين حسام</option>
                                                         </select>
-                                                        <button class="btn btn-primary btn-sm d-flex add-patient-btn"
-                                                            type="button" data-bs-toggle="modal"
-                                                            data-bs-target="#addPatientModal">
-                                                            <svg class="icon-20" width="10" height="10"
-                                                                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                                                <path fill="currentColor" d="M12 5v14M5 12h14"
-                                                                    stroke="currentColor" stroke-width="2"
-                                                                    stroke-linecap="round" />
-                                                            </svg>
-                                                        </button>
                                                     </div>
                                                 </div>
 
 
-                                                <div class="col-12 col-md form-group">
-                                                    <label class="form-label" data-ar="الطبيب *"
-                                                        data-en="Doctor *">الطبيب
-                                                        *</label>
-                                                    <select id="doctor"
-                                                        class="form-select-sm form-select mb-3 shadow-none">
-                                                        <option selected data-ar="إختار الطبيب" data-en="Select Doctor">
-                                                            إختار الطبيب</option>
-                                                        <option value="1" data-ar="خالد عمر" data-en="Khalid Omer">خالد
-                                                            عمر
-                                                        </option>
-                                                        <option value="2" data-ar="ألاء أحمد" data-en="Alaa Ahmed">ألاء
-                                                            أحمد
-                                                        </option>
-                                                        <option value="3" data-ar="ياسمين حسام"
-                                                            data-en="Yasmeen Hossam">
-                                                            ياسمين حسام</option>
-                                                    </select>
+                                                <div id="input-result-mobile" class="col-12 col-md form-group d-none">
+                                                    <label class="form-label" for="mobile" data-ar="رقم الهاتف"
+                                                        data-en="Mobile">رقم الهاتف</label>
+                                                    <input type="text" class="form-control-sm form-control mb-3"
+                                                        id="mobile" placeholder="" disabled>
+                                                </div>
+
+                                                <div id="input-result-gender" class="col-12 col-md form-group d-none">
+                                                    <label class="form-label" for="gender" data-ar="النوع"
+                                                        data-en="Gender">النوع</label>
+                                                    <input type="text" class="form-control-sm form-control mb-3"
+                                                        id="gender" placeholder="" disabled>
                                                 </div>
                                             </div>
 
-                                            <div class="row">
-                                                <div class="col-12 col-md form-group">
-                                                    <label class="form-label" for="exampleInputText6"
-                                                        data-ar="تاريخ الحجز" data-en="Reservation Date">تاريخ
-                                                        الحجز</label>
-                                                    <input type="text"
-                                                        class="form-control-sm form-control mb-3 date_flatpicker"
-                                                        placeholder="" id="reservation_date">
+                                            <div class="row d-none" id="edit-section">
+                                                <div class="col form-group">
+                                                    <div class="form-check d-block">
+                                                        <input class="form-check-input" type="checkbox" value=""
+                                                            id="edit">
+                                                        <label class="form-check-label" for="edit" data-ar="تعديل"
+                                                            data-en="Edit">
+                                                            تعديل
+                                                        </label>
+                                                    </div>
                                                 </div>
-
-                                                <div class="col-12 col-md form-group">
-                                                    <label class="form-label" data-ar="القسم الطبي *"
-                                                        data-en="Medical Department *">القسم الطبي *</label>
-                                                    <select id="medical_department"
-                                                        class="form-select-sm form-select mb-3 shadow-none">
-                                                        <option selected="" data-ar="اختر القسم الطبي"
-                                                            data-en="Select Medical Department">اختر القسم الطبي
-                                                        </option>
-                                                        <option data-ar="طب القلب" data-en="Cardiology" value="1">طب
-                                                            القلب
-                                                        </option>
-                                                        <option data-ar="طب الجلد" data-en="Dermatology" value="2">طب
-                                                            الجلد
-                                                        </option>
-                                                        <option data-ar="طب الأطفال" data-en="Pediatrics" value="3">طب
-                                                            الأطفال</option>
-                                                        <option data-ar="طب العظام" data-en="Orthopedics" value="3">طب
-                                                            العظام</option>
-                                                        <option data-ar="طب الأعصاب" data-en="Neurology" value="3">طب
-                                                            الأعصاب</option>
-                                                    </select>
-
-                                                </div>
-                                            </div>
-
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-12 col-lg-4">
-                        <div class="row">
-                            <div class="col-md-12 col-lg-12">
-                                <div class="card" data-aos="fade-up" data-aos-delay="600">
-                                    <div class="card-body">
-                                        <form>
-                                            <div class="col form-group">
-                                                <label class="form-label" for="total" data-ar="الإجمالي"
-                                                    data-en="Total">الإجمالي</label>
-                                                <input type="text" class="form-control-sm form-control mb-3" id="total"
-                                                    placeholder="$0.00" disabled>
-                                            </div>
-                                            <div class="col form-group">
-                                                <label class="form-label" for="grand_total" data-ar="الإجمالي الكلي"
-                                                    data-en="Grand Total">Grand Total</label>
-                                                <input type="grand_total" class="form-control-sm form-control mb-3"
-                                                    id="grand_total" placeholder="$ 0.00" disabled>
-                                            </div>
-
-                                            <div class="btn btn-border active col-span-full d-block"
-                                                data-bs-toggle="modal" data-bs-target="#reservationModal">
-                                                <span class="" data-ar="تأكيد الحجز" data-en="Book Now"> Book Now</span>
                                             </div>
                                         </form>
                                     </div>
@@ -780,164 +712,84 @@
                     </div>
                 </div>
 
-                <div class="row">
+                <div class="row d-none" id="input-result-tests-section">
                     <div class="col-md-12">
-                        <div class="row d-none" id="patientSection">
-                            <div class="col-md-12 col-lg-12">
-                                <div class="overflow-hidden card" data-aos="fade-up" data-aos-delay="600">
-                                    <div class="card-body">
-                                        <form>
-                                            <div class="row">
-                                                <div class="col form-group">
-                                                    <label class="form-label" for="patien_name" data-ar="إسم المريض"
-                                                        data-en="Patient Name">إسم المريض</label>
-                                                    <input type="text" class="form-control-sm form-control mb-3"
-                                                        id="patient_name" placeholder="خالد عمر" disabled>
-                                                </div>
-                                                <div class="col form-group">
-                                                    <label class="form-label" for="patien_sex" data-ar="النوع"
-                                                        data-en="Gender">النوع</label>
-                                                    <input type="text" class="form-control-sm form-control mb-3"
-                                                        id="patien_sex" placeholder="ذكر" disabled>
-                                                </div>
-
-                                                <div class="col form-group">
-                                                    <label class="form-label" for="mobile_phone" data-ar="رقم الموبايل"
-                                                        data-en="Mobile Phone">رقم الموبايل</label>
-                                                    <input type="text" class="form-control-sm form-control mb-3"
-                                                        id="mobile_phone" placeholder="01014478785" disabled>
-                                                </div>
-                                                <div class="col form-group">
-                                                    <label class="form-label" for="mobile_age" data-ar="عمر المريض"
-                                                        data-en="Patient Age">عمر المريض</label>
-                                                    <input type="text" class="form-control-sm form-control mb-3"
-                                                        id="patient_age" placeholder="25" disabled>
-                                                </div>
-                                            </div>
-
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
                         <div class="row">
                             <div class="col-md-12 col-lg-12">
                                 <div class="overflow-hidden card" data-aos="fade-up" data-aos-delay="600">
                                     <div class="card-body">
                                         <form>
+                                            <div class="row" id="old-tests">
+                                                <div class="tags-container">
+                                                    <div class="tag">CBC</div>
+                                                    <div class="tag">CBC</div>
+                                                    <div class="tag">CBC</div>
+                                                    <div class="tag">T3 - Free</div>
+                                                    <div class="tag">CBC</div>
+                                                    <div class="tag">CBC</div>
+                                                    <div class="tag">CBC</div>
+                                                    <div class="tag">CBC</div>
+                                                    <div class="tag">CBC</div>                                         
+                                                </div>
+                                            </div>
+
+
+                                             <div class="row d-none" id="new-tests">
+                                                <div class="tags-container">
+                                                    <div class="tag">CBC</div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row d-none" id="test-options-section">
+                    <div class="col-md-12 col-lg-12">
+                        <div class="row">
+                            <div class="col-md-12 col-lg-12">
+                                <div class="overflow-hidden card" data-aos="fade-up" data-aos-delay="600">
+                                    <div class="card-body">
+                                        <form>
+                                            <div class="row">
+                                                <div class="col-12 col-md form-group">
+                                                    <label class="form-label" for="mobile" data-ar="الفحص"
+                                                        data-en="Test">الفحص</label>
+                                                    <input type="text" class="form-control-sm form-control mb-3"
+                                                        id="text_options" placeholder="" disabled>
+                                                </div>
+
+                                                <div class="col-12 col-md form-group">
+                                                    <label class="form-label" for="observation_request"
+                                                        data-ar="نتيجة الملاحظة" data-en="Observation Request">نتيجة
+                                                        الملاحظة</label>
+                                                    <input type="text" class="form-control-sm form-control mb-3"
+                                                        id="observation_request" placeholder="" disabled>
+                                                </div>
+
+                                                <div class="col-12 col-md form-group">
+                                                    <label class="form-label" for="gender" data-ar="فحص المعمل"
+                                                        data-en="Lab Test">فحص المعمل</label>
+                                                    <input type="text" class="form-control-sm form-control mb-3"
+                                                        id="lab_test" placeholder="" disabled>
+                                                </div>
+
+                                            </div>
+
                                             <div class="row">
                                                 <div class="col form-group">
                                                     <div class="form-check d-block">
-                                                        <input class="form-check-input health_insurance_auto_scroll"
-                                                            type="checkbox" value="" id="health_insurance">
-                                                        <label class="form-check-label" for="health_insurance"
-                                                            data-ar="التامين الصحي" data-en="Health Insurance">
-                                                            التأمين الصحي
+                                                        <input class="form-check-input" type="checkbox" value=""
+                                                            id="is_external_lab">
+                                                        <label class="form-check-label" for="edit"
+                                                            data-ar="هل معمل خارجي" data-en="Is External Lab">
+                                                            تعديل
                                                         </label>
                                                     </div>
                                                 </div>
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="col-md-3 form-group d-none health_insurance_Section">
-                                                    <label class="form-label" for="mediacal_insurance"
-                                                        data-ar="التامين الطبي" data-en="Medical Insurance">التامين
-                                                        الطبي</label>
-                                                    <input type="text"
-                                                        class="form-control-sm form-control mb-3 mediacal_insurance_auto_scroll"
-                                                        id="mediacal_insurance" placeholder="">
-                                                </div>
-                                                <div class="col-md-3 form-group d-none health_insurance_Section">
-                                                    <label class="form-label" for="insurance_company"
-                                                        data-ar="شركة التامين الطبي"
-                                                        data-en="Medical Insurance Company">شركة التامين الطبي</label>
-                                                    <input type="text" class="form-control-sm form-control mb-3"
-                                                        id="insurance_company" placeholder="">
-                                                </div>
-                                                <div class="col-md-3 form-group d-none health_insurance_Section">
-                                                    <label class="form-label" for="percentage" data-ar="النسبة المئوية"
-                                                        data-en="Percentage">النسبة المئوية</label>
-                                                    <input type="text" class="form-control-sm form-control mb-3"
-                                                        id="percentage" placeholder="0%">
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-12 col-lg-12">
-                                <div class="overflow-hidden card" data-aos="fade-up" data-aos-delay="600">
-                                    <div class="card-body">
-                                        <form>
-                                            <div class="row">
-
-                                                <!-- Extra Discount + Hospital Percentage -->
-                                                <div class="col-md-3 form-group">
-                                                    <div class="form-check mb-2">
-                                                        <input class="form-check-input" type="checkbox"
-                                                            id="extra_discount">
-                                                        <label class="form-check-label" for="extra_discount"
-                                                            data-ar="خصم إضافي" data-en="Extra Discount">
-                                                            Extra Discount
-                                                        </label>
-                                                    </div>
-
-                                                    <div class="form-group d-none" id="hospitalPercentageSection">
-                                                        <label class="form-label" data-ar="نسبة المستشفى"
-                                                            data-en="Hospital Percentage">نسبة المستشفى</label>
-                                                        <input type="text" class="form-control form-control-sm"
-                                                            placeholder="$ 0.00">
-                                                    </div>
-                                                </div>
-
-                                                <!-- Special Doctor Percentage + Doctor Percentage -->
-                                                <div class="col-md-3 form-group">
-                                                    <div class="form-check mb-2">
-                                                        <input class="form-check-input" type="checkbox"
-                                                            id="specialDoctorPercentage">
-                                                        <label class="form-check-label" for="specialDoctorPercentage"
-                                                            data-ar="نسبة الطبيب الخاص"
-                                                            data-en="Special Doctor Percentage">
-                                                            نسبة الطبيب الخاص
-                                                        </label>
-                                                    </div>
-
-                                                    <div class="form-group d-none" id="doctorPercentageSection">
-                                                        <label class="form-label" data-ar="نسبة الطبيب"
-                                                            data-en="Doctor Percentage">Doctor Percentage</label>
-                                                        <input type="text" class="form-control form-control-sm"
-                                                            placeholder="0.000">
-                                                    </div>
-                                                </div>
-
-                                                <!-- Cancel Doctor Fees -->
-                                                <div class="col-md-3 form-group">
-                                                    <div class="form-check mb-2">
-                                                        <input class="form-check-input" type="checkbox"
-                                                            id="cancelDoctorFees">
-                                                        <label class="form-check-label" for="cancelDoctorFees"
-                                                            data-ar="إلغاء رسوم الطبيب" data-en="Cancel Doctor Fees">
-                                                            إلغاء رسوم الطبيب
-                                                        </label>
-                                                    </div>
-                                                </div>
-
-                                                <!-- Is Consulting -->
-                                                <div class="col-md-3 form-group">
-                                                    <div class="form-check mb-2">
-                                                        <input class="form-check-input" type="checkbox"
-                                                            id="isConsulting">
-                                                        <label class="form-check-label" for="isConsulting"
-                                                            data-ar="هل إستشارة" data-en="Is Consulting">
-                                                            هل إستشارة
-                                                        </label>
-                                                    </div>
-                                                </div>
-
                                             </div>
                                         </form>
                                     </div>
@@ -946,6 +798,94 @@
                         </div>
                     </div>
                 </div>
+
+
+
+                <div class="row d-none" id="input-result-texteditor">
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <div class="card-header header-grid">
+
+                                <!-- Title -->
+                                <h4 class="card-title m-0" data-ar="العناصر" data-en="Items" id="items">
+                                    العناصر
+                                </h4>
+                            </div>
+                            <div class="card-body p-0">
+                                <div class="table-responsive mt-4">
+
+                                    <table id="reservation-invoices" class="table table-striped mb-0" role="grid">
+                                        <thead>
+                                            <tr>
+                                                <th><input class="form-check-input" type="checkbox" value="" id=""></th>
+                                                <th data-ar="الرقم" data-en="No.">الرقم</th>
+                                                <th data-ar="إسم الفحص" data-en="Test Name">إسم الفحص</th>
+                                                <th data-ar="UOM" data-en="UOM">UOM</th>
+                                                <th data-ar="مجموعة الفعالية" data-en="ُEvent Group">مجموعة الفعالية
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <div> <input class="form-check-input" type="checkbox"></div>
+                                                    <div> <input class="form-check-input" type="checkbox"></div>
+                                                    <div> <input class="form-check-input" type="checkbox"></div>
+                                                </td>
+
+                                                <td>
+                                                    <div>1</div>
+                                                    <div>2</div>
+                                                    <div>3</div>
+                                                </td>
+
+                                                <td>
+                                                    <div>CBC</div>
+                                                    <div>Glucose</div>
+                                                    <div>Cholesterol</div>
+                                                </td>
+
+                                                <td>
+                                                    <div>mg/dL</div>
+                                                    <div>mg/dL</div>
+                                                    <div>mg/dL</div>
+                                                </td>
+
+                                                <td>
+                                                    <div>Hematology</div>
+                                                    <div>Biochemistry</div>
+                                                    <div>Lipid Profile</div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row d-none" id="input-result-datatable">
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <div class="card-header header-grid">
+
+                                <!-- Title -->
+                                <h4 class="card-title m-0" data-ar="نتيجة خاصة" data-en="Custom Result" id="custom_result">
+                                 نتيجة خاصة
+                                </h4>
+                            </div>
+                            <div class="card-body">
+                                <div>
+                                   <div id="editor"></div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
 
             <div class="page" id="print-result">
@@ -1581,6 +1521,9 @@
     <!-- Flatpickr Script -->
     <script src="../assets/vendor/flatpickr/dist/flatpickr.min.js"></script>
 
+    <!-- TinyMCE CDN -->
+<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+
     <!-- Lab Script -->
     <script src="../assets/js/lab.js"></script>
 
@@ -1589,6 +1532,7 @@
 
     <!-- Language Script -->
     <script src="../assets/js/lang.js"></script>
+
 
 
     <!--------------------------------- Modals -------------------------------------------->
@@ -1766,11 +1710,12 @@
 
 
                         <div class="col form-group">
-                            <label class="form-label" data-ar="المعمل الخارجي" data-en="External Lab">المعمل الخارجي</label>
+                            <label class="form-label" data-ar="المعمل الخارجي" data-en="External Lab">المعمل
+                                الخارجي</label>
                             <div class="input-group d-flex">
                                 <select id="external_lab_m" class="form-select-sm form-select mb-3 shadow-none">
                                     <option selected data-ar="إختار المعمل الخارجي" data-en="Select external lab">إختار
-                                       المعمل الخارجي
+                                        المعمل الخارجي
                                     </option>
                                     <option value="1" data-ar="AlBorg" data-en="AlBorg">AlBorg</option>
                                     <option value="2" data-ar="Alfa" data-en="Alfa">Alfa</option>

@@ -279,3 +279,80 @@ select.addEventListener('change', function () {
     this.value = '';
 });
 
+
+/* ===================================================== */
+
+
+
+const patientSelect = document.getElementById('patient');
+
+const mobileField = document.getElementById('input-result-mobile');
+const genderField = document.getElementById('input-result-gender');
+const editSection = document.getElementById('edit-section');
+const testsSection = document.getElementById('input-result-tests-section');
+
+
+patientSelect.addEventListener('change', function () {
+    if (this.value) {
+        mobileField.classList.remove('d-none');
+        genderField.classList.remove('d-none');
+        editSection.classList.remove('d-none');
+        testsSection.classList.remove('d-none');
+    } else {
+        mobileField.classList.add('d-none');
+        genderField.classList.add('d-none');
+        editSection.classList.add('d-none');
+        testsSection.classList.add('d-none');
+    }
+});
+
+
+
+document.addEventListener('click', function (e) {
+
+    const tag = e.target.closest('.tag');
+    if (!tag) return;
+
+    const testOptionsSection = document.getElementById('test-options-section');
+    const dataTableSection = document.getElementById('input-result-datatable');
+    const textEditorSection = document.getElementById('input-result-texteditor');
+
+
+    if (!testOptionsSection || !dataTableSection) {
+        console.error('❌ Section not found');
+        return;
+    }
+
+    testOptionsSection.classList.remove('d-none');
+    dataTableSection.classList.remove('d-none');
+    textEditorSection.classList.remove('d-none');
+
+    console.log('✅ Tag clicked:', tag.innerText);
+});
+
+
+
+/* ========================= Texteditor (Input-Result) ====================== */
+
+var quill = new Quill('#editor', {
+    theme: 'snow'
+});
+
+
+/*======================== Edit Checkbox (Input- Result)  =================*/
+
+const editCheckbox = document.getElementById('edit');
+const oldTests = document.getElementById('old-tests');
+const newTests = document.getElementById('new-tests');
+
+editCheckbox.addEventListener('change', function () {
+    if (this.checked) {
+        // لو مضغوط على checkbox
+        oldTests.classList.add('d-none');  // اخفي القديم
+        newTests.classList.remove('d-none'); // أظهر الجديد
+    } else {
+        // لو مش مضغوط
+        newTests.classList.add('d-none');  // اخفي الجديد
+        oldTests.classList.remove('d-none'); // أظهر القديم
+    }
+});
