@@ -187,10 +187,10 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     } else {
         // 👇 Clinics هي الصفحة الافتراضية
-        showPage('laboratory-tool');
+        showPage('details');
 
         sidebarLinks.forEach(link => {
-            if (link.dataset.target === 'laboratory-tool') {
+            if (link.dataset.target === 'details') {
                 link.classList.add('active');
             }
         });
@@ -390,7 +390,7 @@ printResultPatientSelect.addEventListener('change', function () {
 
 document.addEventListener('click', function (e) {
 
-    const tag = e.target.closest('.test-tag');
+    const tag = e.target.closest('.tag');
     if (!tag) return;
 
    

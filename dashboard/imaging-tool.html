@@ -84,14 +84,14 @@
                 <ul class="navbar-nav iq-main-menu" id="sidebar-menu">
                     <li class="nav-item static-item">
                         <a class="nav-link static-item disabled" href="#" tabindex="-1">
-                            <span class="default-icon" data-ar="الحجز" data-en="Reservation">الحجز</span>
+                            <span class="default-icon" data-ar="الأشعة" data-en="Imaging">الأشعة</span>
                             <span class="mini-icon">-</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="../dashboard/index.html" data-bs-toggle="tooltip"
-                            data-bs-placement="right" data-title-ar="المعمل" data-title-en="Laboratory"
-                            data-target="laboratory-tool">
+                            data-bs-placement="right" data-title-ar="التفاصيل" data-title-en="Details"
+                            data-target="details">
                             <i class="icon">
                                 <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
                                     class="icon-20">
@@ -109,14 +109,14 @@
                                     <path d="M10 2H14V3H10V2Z" fill="currentColor" />
                                 </svg>
                             </i>
-                            <span class="item-name" data-ar="المعمل" data-en="Laboratory">المعمل</span>
+                            <span class="item-name" data-ar="التفاصيل" data-en="Details">التفاصيل</span>
                         </a>
                     </li>
 
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="../dashboard/index.html" data-bs-toggle="tooltip"
-                            data-bs-placement="right" data-title-ar="إدخال النتائج" data-title-en="Input Result"
-                            data-target="input-result">
+                            data-bs-placement="right" data-title-ar="النتيجة" data-title-en="Result"
+                            data-target="result">
                             <i class="icon">
                                 <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
                                     class="icon-20">
@@ -137,32 +137,7 @@
                                 </svg>
                             </i>
 
-                            <span class="item-name" data-ar="إدخال النتائج" data-en="Input Result">إدخال النتائج</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="../dashboard/index.html" data-bs-toggle="tooltip"
-                            data-bs-placement="right" data-title-ar="طباعةالنتائج" data-title-en="Print Result"
-                            data-target="print-result">
-                            <i class="icon">
-                                <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
-                                    class="icon-20">
-
-                                    <!-- Scanner Frame -->
-                                    <path opacity="0.4"
-                                        d="M4 6C4 4.9 4.9 4 6 4H18C19.1 4 20 4.9 20 6V18C20 19.1 19.1 20 18 20H6C4.9 20 4 19.1 4 18V6Z"
-                                        fill="currentColor" />
-
-                                    <!-- Scan Window -->
-                                    <path d="M8 8H16V16H8V8Z" fill="currentColor" />
-
-                                    <!-- Scan Line -->
-                                    <path d="M7 12H17V13H7V12Z" fill="currentColor" />
-                                </svg>
-                            </i>
-
-                            <span class="item-name" data-ar="طباعة النتائج" data-en="Print Result">Print Result</span>
+                            <span class="item-name" data-ar="النتيجة" data-en="Result">النتيجة</span>
                         </a>
                     </li>
                 </ul>
@@ -240,15 +215,11 @@
                     <div class="col-md-12">
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
-                                <h1 id="page-title" data-ar="المعمل" data-en="Laboratory">المعمل</h1>
+                                <h1 id="page-title" data-ar="الأشعة" data-en="Imaging">الأشعة</h1>
                             </div>
                             <div class="d-flex" style="gap: 12px;">
                                 <a href="#" id="home-page" class="btn btn-link btn-soft-light" data-ar="الصفحة الرئيسية"
                                     data-en="Home">الصفحة الرئيسية</a>
-                                <a href="#" class="btn btn-link btn-soft-light" data-ar="طباعة النتائج"
-                                    data-en="Print Result">طباعة النتائج</a>
-                                <a href="#" class="btn btn-link btn-soft-light" data-ar="إستعلامات أسعار الخدمات"
-                                    data-en="Service Price Inquiries">إستعلامات أسعار الخدمات</a>
                             </div>
 
                             <div class="dropdown d-flex  align-items-center">
@@ -352,7 +323,7 @@
         <div class="conatiner-fluid content-inner mt-n5 py-0" style="margin-right: 30px;">
 
 
-            <div class="page" id="laboratory-tool">
+            <div class="page" id="details">
                 <div id="observationDetailsWrapper">
                     <div class="row">
                         <div class="col-md-12 col-lg-12">
@@ -434,17 +405,25 @@
                                                 </div>
 
                                                 <div class="row">
-                                                    <div class="col-md-6 col-lg-6">
-                                                        <!-- <div class="col form-group">
-                                                            <label class="form-label" for="observation"
-                                                                data-ar="ملاحظات" data-en="Observation">
-                                                                ملاحظات
-                                                            </label>
-                                                            <textarea class="form-control form-control-sm mb-3"
-                                                                id="observation" rows="2" placeholder="" disabled>
-                                                       </textarea>
-                                                        </div> -->
 
+                                                    <div class="col-md-3 col-lg-3 form-group">
+                                                        <label class="form-label" for="medical_insurance"
+                                                            data-ar="التأمين الطبي" data-en="Mediacl Insurance">التأمين
+                                                            الطبي</label>
+                                                        <input type="text" class="form-control-sm form-control mb-3"
+                                                            id="medical_insurance" placeholder="" disabled>
+                                                    </div>
+
+
+                                                    <div class="col-md-3 col-lg-3 form-group">
+                                                        <label class="form-label" for="imaging_type"
+                                                            data-ar="نوع الأشعة" data-en="Imaging Type">نوع
+                                                            الاشعة</label>
+                                                        <input type="text" class="form-control-sm form-control mb-3"
+                                                            id="imaging_type" placeholder="" disabled>
+                                                    </div>
+
+                                                    <div class="col-md-6 col-lg-6">
                                                         <label data-ar="ملاحظات" data-en="Observation">ملاحظات</label>
                                                         <div class="multi-select-container">
                                                             <div id="selectedItems" class="selected-items"></div>
@@ -457,19 +436,9 @@
                                                             </select>
                                                         </div>
                                                     </div>
+                                                </div>
 
-
-                                                    <div class="col-md-3 col-lg-3">
-                                                        <div class="btn btn-border active col-span-full d-block"
-                                                            id="add_external_lab" data-bs-toggle="modal"
-                                                            data-bs-target="#addExternalLabModal">
-                                                            <span class="" data-ar="إضافة معمل خارجي"
-                                                                data-en="Add External Lab">
-                                                                إضافة معمل خارجي </span>
-                                                        </div>
-                                                    </div>
-
-
+                                                <div class="row">
                                                     <div class="col-md-3 col-lg-3">
                                                         <div class="btn btn-border active col-span-full d-block"
                                                             id="confirm_request">
@@ -478,7 +447,6 @@
                                                                 تأكيد الطلب</span>
                                                         </div>
                                                     </div>
-
                                                 </div>
                                             </form>
                                         </div>
@@ -530,50 +498,6 @@
                             </div>
                         </div>
                     </div>
-
-
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="card">
-                                <div class="card-header header-grid">
-
-                                    <!-- Title -->
-                                    <h4 class="card-title m-0" data-ar="المعامل الخارجية" data-en="External Labs">
-                                        المعامل الخارجية
-                                    </h4>
-                                </div>
-                                <div class="card-body p-0">
-                                    <div class="table-responsive mt-4">
-
-                                        <table id="reservation-invoices" class="table table-striped mb-0" role="grid">
-                                            <thead>
-                                                <tr>
-                                                    <th><input class="form-check-input" type="checkbox" value=""
-                                                            id="health_insurance"></th>
-                                                    <th data-ar="الرقم" data-en="No.">الرقم</th>
-                                                    <th data-ar="الملاحظة *" data-en="Observation *">الملاحظة *</th>
-                                                    <th data-ar="معمل خارجي" data-en="ُExternal Lab">معمل خارجي</th>
-                                                    <th data-ar="السعر" data-en="Price">السعر</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td><input class="form-check-input" type="checkbox"></td>
-                                                    <td>1</td>
-                                                    <td>Observation 1</td>
-                                                    <td>Alfa Lab</td>
-                                                    <td>12.000</td>
-
-                                                </tr>
-
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
 
 
@@ -644,7 +568,7 @@
                 </div>
             </div>
 
-            <div class="page" id="input-result">
+            <div class="page" id="result">
                 <div class="row">
                     <div class="col-md-12 col-lg-12">
                         <div class="row">
@@ -720,15 +644,15 @@
                                         <form>
                                             <div class="row" id="old-tests">
                                                 <div class="tags-container">
-                                                    <div class="test-tag">CBC</div>
-                                                    <div class="test-tag">CBC</div>
-                                                    <div class="test-tag">CBC</div>
-                                                    <div class="test-tag">T3 - Free</div>
-                                                    <div class="test-tag">CBC</div>
-                                                    <div class="test-tag">CBC</div>
-                                                    <div class="test-tag">CBC</div>
-                                                    <div class="test-tag">CBC</div>
-                                                    <div class="test-tag">CBC</div>
+                                                    <div class="tag">CBC</div>
+                                                    <div class="tag">CBC</div>
+                                                    <div class="tag">CBC</div>
+                                                    <div class="tag">T3 - Free</div>
+                                                    <div class="tag">CBC</div>
+                                                    <div class="tag">CBC</div>
+                                                    <div class="tag">CBC</div>
+                                                    <div class="tag">CBC</div>
+                                                    <div class="tag">CBC</div>
                                                 </div>
                                             </div>
 
@@ -876,7 +800,7 @@
                             </div>
                             <div class="card-body">
                                 <div>
-                                    <div  id="custom_result"></div>
+                                    <div id="custom_result"></div>
                                 </div>
 
                             </div>
@@ -887,217 +811,6 @@
 
             </div>
 
-            <div class="page" id="print-result">
-                <div class="row">
-                    <div class="col-md-12 col-lg-12">
-                        <div class="row">
-                            <div class="col-md-12 col-lg-12">
-                                <div class="overflow-hidden card" data-aos="fade-up" data-aos-delay="600">
-                                    <div class="card-body">
-                                        <form>
-                                            <div class="row">
-                                                <div class="col-md-4 col-lg- form-group">
-                                                    <label class="form-label" data-ar="المريض *"
-                                                        data-en="Patient *">المريض
-                                                        *</label>
-
-                                                    <div class="input-group d-flex">
-                                                        <select id="patient"
-                                                            class="form-select-sm form-select mb-3 shadow-none print-patient">
-                                                            <option selected data-ar="إختار المريض"
-                                                                data-en="Select patient">إختار المريض</option>
-                                                            <option value="1" data-ar="خالد عمر" data-en="Khalid Omer">
-                                                                خالد
-                                                                عمر</option>
-                                                            <option value="2" data-ar="ألاء أحمد" data-en="Alaa Ahmed">
-                                                                ألاء
-                                                                أحمد</option>
-                                                            <option value="3" data-ar="ياسمين حسام"
-                                                                data-en="Yasmeen Hossam">ياسمين حسام</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-
-
-                                                <div id="print-result-mobile" class="col-12 col-md form-group d-none">
-                                                    <label class="form-label" for="mobile" data-ar="رقم الهاتف"
-                                                        data-en="Mobile">رقم الهاتف</label>
-                                                    <input type="text" class="form-control-sm form-control mb-3"
-                                                        id="mobile" placeholder="" disabled>
-                                                </div>
-
-                                                <div id="print-result-gender" class="col-12 col-md form-group d-none">
-                                                    <label class="form-label" for="gender" data-ar="النوع"
-                                                        data-en="Gender">النوع</label>
-                                                    <input type="text" class="form-control-sm form-control mb-3"
-                                                        id="gender" placeholder="" disabled>
-                                                </div>
-                                            </div>
-
-                                            <div class="row d-none" id="reprint-section">
-                                                <div class="col form-group">
-                                                    <div class="form-check d-block">
-                                                        <input class="form-check-input" type="checkbox" value=""
-                                                            id="reprint">
-                                                        <label class="form-check-label" for="reprint"
-                                                            data-ar="إعادة طباعة" data-en="Reprint">
-                                                            إعادة طباعة
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row d-none" id="print-result-tests-section">
-                    <div class="col-md-12">
-                        <div class="row">
-                            <div class="col-md-12 col-lg-12">
-                                <div class="overflow-hidden card" data-aos="fade-up" data-aos-delay="600">
-                                    <div class="card-body">
-                                        <form>
-                                            <div class="row">
-                                                <div class="tags-container">
-                                                    <div class="tag">CBC</div>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row d-none" id="print-result-test-options-section">
-                    <div class="col-md-12 col-lg-12">
-                        <div class="row">
-                            <div class="col-md-12 col-lg-12">
-                                <div class="overflow-hidden card" data-aos="fade-up" data-aos-delay="600">
-                                    <div class="card-body">
-                                        <form>
-                                            <div class="row">
-                                                <div class="col-12 col-md form-group">
-                                                    <label class="form-label" for="mobile" data-ar="الفحص"
-                                                        data-en="Test">الفحص</label>
-                                                    <input type="text" class="form-control-sm form-control mb-3"
-                                                        id="print_test" placeholder="" disabled>
-                                                </div>
-
-                                                <div class="col-12 col-md form-group">
-                                                    <label class="form-label" for="observation_request"
-                                                        data-ar="نتيجة الملاحظة" data-en="Observation Request">نتيجة
-                                                        الملاحظة</label>
-                                                    <input type="text" class="form-control-sm form-control mb-3"
-                                                        id="print_observation_request" placeholder="" disabled>
-                                                </div>
-
-                                                <div class="col-12 col-md form-group">
-                                                    <label class="form-label" for="gender" data-ar="فحص المعمل"
-                                                        data-en="Lab Test">فحص المعمل</label>
-                                                    <input type="text" class="form-control-sm form-control mb-3"
-                                                        id="print_lab_test" placeholder="" disabled>
-                                                </div>
-
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="row d-none" id="print-result-datatable">
-                    <div class="col-sm-12">
-                        <div class="card">
-                            <div class="card-header header-grid">
-
-                                <!-- Title -->
-                                <h4 class="card-title m-0" data-ar="العناصر" data-en="Items" id="items">
-                                    العناصر
-                                </h4>
-                            </div>
-                            <div class="card-body p-0">
-                                <div class="table-responsive mt-4">
-
-                                    <table id="reservation-invoices" class="table table-striped mb-0" role="grid">
-                                        <thead>
-                                            <tr>
-                                                <th><input class="form-check-input" type="checkbox" value="" id=""></th>
-                                                <th data-ar="الرقم" data-en="No.">الرقم</th>
-                                                <th data-ar="إسم الفحص" data-en="Test Name">إسم الفحص</th>
-                                                <th data-ar="UOM" data-en="UOM">UOM</th>
-                                                <th data-ar="مجموعة الفعالية" data-en="ُEvent Group">مجموعة الفعالية
-                                                </th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                    <div> <input class="form-check-input" type="checkbox"></div>
-                                                    <div> <input class="form-check-input" type="checkbox"></div>
-                                                    <div> <input class="form-check-input" type="checkbox"></div>
-                                                </td>
-
-                                                <td>
-                                                    <div>1</div>
-                                                    <div>2</div>
-                                                    <div>3</div>
-                                                </td>
-
-                                                <td>
-                                                    <div>CBC</div>
-                                                    <div>Glucose</div>
-                                                    <div>Cholesterol</div>
-                                                </td>
-
-                                                <td>
-                                                    <div>mg/dL</div>
-                                                    <div>mg/dL</div>
-                                                    <div>mg/dL</div>
-                                                </td>
-
-                                                <td>
-                                                    <div>Hematology</div>
-                                                    <div>Biochemistry</div>
-                                                    <div>Lipid Profile</div>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row d-none" id="print-result-textfield">
-                    <div class="col-sm-12">
-                        <div class="card">
-                            <div class="card-header header-grid">
-
-                                <!-- Title -->
-                                <h4 class="card-title m-0" data-ar="نتيجة خاصة" data-en="Custom Result">
-                                    نتيجة خاصة
-                                </h4>
-                            </div>
-                            <div class="card-body">
-                                <div class="col-12 col-md form-group">
-                                    <input type="text" class="form-control-sm form-control mb-3" id="print_custom_result"
-                                        placeholder="" disabled>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
         </div>
 
@@ -1446,7 +1159,7 @@
     <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 
     <!-- Lab Script -->
-    <script src="../assets/js/lab.js"></script>
+    <script src="../assets/js/imaging.js"></script>
 
     <!-- App Script -->
     <script src="../assets/js/hope-ui.js" defer></script>
