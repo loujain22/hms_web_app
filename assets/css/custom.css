@@ -1115,6 +1115,26 @@ h4 {
   z-index: 9999;
 }
 
+.test-tag-print{
+  background: #b3e0e2;
+  color: #014144;
+  padding: 12px 28px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  min-width: 90px;
+  width: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  cursor: pointer !important;
+  pointer-events: auto !important;
+  position: relative;
+  z-index: 9999;
+}
+
 .tag-edit {
   background: #ecdfc6;
   color: #905b00;
@@ -1144,4 +1164,25 @@ textarea {
 .tox,
 .tox * {
   writing-mode: horizontal-tb !important;
+}
+
+
+
+
+.ql-editor {
+    font-family: Cairo, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+/* عربي */
+html[dir="rtl"] .ql-editor {
+    direction: rtl;
+    text-align: right;
+}
+
+/* إنجليزي */
+html[dir="ltr"] .ql-editor {
+    direction: ltr;
+    text-align: left;
 }

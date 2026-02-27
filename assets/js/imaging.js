@@ -245,171 +245,119 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+/* ======================= Offline Editor =================== */
 
-// !--------------- Multi Select (Dental)
+const quill = new Quill('#editor', {
+    theme: 'snow',
+    placeholder: '',
+    modules: {
+        toolbar: [
+            ['bold', 'italic', 'underline'],
+            [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+            ['link'],
+            ['clean']
+        ]
+    }
+});
 
-const select = document.getElementById('observation');
-const selectedItems = document.getElementById('selectedItems');
 
-select.addEventListener('change', function () {
-    const option = this.options[this.selectedIndex];
-    if (!option.value) return;
 
-    // إنشاء الـ tag
-    const tag = document.createElement('div');
-    tag.className = 'tag';
-    tag.innerHTML = `
-    <span>${option.text}</span>
-    <button type="button">&times;</button>
-  `;
 
-    selectedItems.appendChild(tag);
 
-    // حذف العنصر من الـ dropdown
-    option.remove();
+/* ======================= Empty Datatabel ============= */
 
-    // عند حذف الـ tag
-    tag.querySelector('button').addEventListener('click', () => {
-        // إرجاع option للـ select
-        select.appendChild(option);
-        tag.remove();
+const tables = document.querySelectorAll('.table'); 
+tables.forEach(table => {
+    const tbody = table.querySelector('tbody');
+
+    if (!tbody || tbody.children.length === 0) {
+        const emptyRow = document.createElement('tr');
+        const td = document.createElement('td');
+        td.colSpan = table.querySelectorAll('thead th').length; 
+        td.style.textAlign = 'center';
+        td.style.fontStyle = 'italic';
+        td.textContent = 'لم يتم إضافة بيانات بعد';
+        emptyRow.appendChild(td);
+        tbody.appendChild(emptyRow);
+    }
+});
+
+
+
+
+
+// ================================================
+// تحديث عنوان الصفحة حسب التاب واللغة
+// ================================================
+function updatePageTitle(link) {
+    const pageTitle = document.getElementById('page-title');
+    const currentLang = window.currentLang || 'ar';
+    const title = link.querySelector('.item-name')?.getAttribute(`data-${currentLang}`);
+    if (title) pageTitle.textContent = title;
+
+    // حفظ التاب الحالي في localStorage
+    const target = link.getAttribute('data-target') || link.getAttribute('href');
+    localStorage.setItem('activeTab', target);
+}
+
+// ================================================
+// التعامل مع كل التابات
+// ================================================
+const navLinks = document.querySelectorAll('.nav-link[data-target]');
+
+// عند الضغط على أي تاب
+navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        navLinks.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+
+        updatePageTitle(link);
+    });
+});
+
+// ================================================
+// عند تحميل الصفحة، ضبط أول تاب كـ active إذا لا يوجد تاب مخزن
+// ================================================
+window.addEventListener('DOMContentLoaded', () => {
+    const savedTab = localStorage.getItem('activeTab');
+    let activeLink;
+
+    if (savedTab) {
+        // استخدم التاب المخزن إذا موجود
+        activeLink = Array.from(navLinks).find(link => 
+            link.getAttribute('data-target') === savedTab
+        );
+    }
+
+    // إذا لم يوجد تاب مخزن أو لأول مرة، اختر أول تاب في القائمة
+    if (!activeLink) activeLink = navLinks[0];
+
+    // ضبط active
+    navLinks.forEach(l => l.classList.remove('active'));
+    if (activeLink) activeLink.classList.add('active');
+
+    // تحديث العنوان
+    if (activeLink) updatePageTitle(activeLink);
+});
+
+// ================================================
+// دالة تغيير اللغة
+// ================================================
+function setLanguage(lang) {
+    window.currentLang = lang;
+
+    // تحديث كل النصوص حسب اللغة
+    document.querySelectorAll('[data-ar][data-en]').forEach(el => {
+        el.textContent = el.getAttribute(`data-${lang}`);
     });
 
-    // إعادة تعيين select
-    this.value = '';
-});
-
-
-/* ======================= Input Result Tab  ============================== */
-
-
-
-const patientSelect = document.getElementById('patient');
-
-const mobileField = document.getElementById('input-result-mobile');
-const genderField = document.getElementById('input-result-gender');
-const editSection = document.getElementById('edit-section');
-const testsSection = document.getElementById('input-result-tests-section');
-
-
-patientSelect.addEventListener('change', function () {
-    if (this.value) {
-        mobileField.classList.remove('d-none');
-        genderField.classList.remove('d-none');
-        editSection.classList.remove('d-none');
-        testsSection.classList.remove('d-none');
-    } else {
-        mobileField.classList.add('d-none');
-        genderField.classList.add('d-none');
-        editSection.classList.add('d-none');
-        testsSection.classList.add('d-none');
-    }
-});
-
-
-
-document.addEventListener('click', function (e) {
-
-    const tag = e.target.closest('.tag');
-    if (!tag) return;
-
-    const testOptionsSection = document.getElementById('test-options-section');
-    const dataTableSection = document.getElementById('input-result-datatable');
-    const textEditorSection = document.getElementById('input-result-texteditor');
-
-
-    if (!testOptionsSection || !dataTableSection) {
-        console.error('❌ Section not found');
-        return;
+    // تحديث العنوان حسب التاب الحالي دون تغيير الـ active tab
+    const activeLink = document.querySelector('.nav-link.active');
+    if (activeLink) {
+        updatePageTitle(activeLink);
     }
 
-    testOptionsSection.classList.remove('d-none');
-    dataTableSection.classList.remove('d-none');
-    textEditorSection.classList.remove('d-none');
-
-    console.log('✅ Tag clicked:', tag.innerText);
-});
-
-
-
-/* ========================= Texteditor (Input-Result) ====================== */
-
-var quill = new Quill('#custom_result', {
-    theme: 'snow'
-});
-
-
-/*======================== Edit Checkbox (Input- Result)  =================*/
-
-const editCheckbox = document.getElementById('edit');
-const oldTests = document.getElementById('old-tests');
-const newTests = document.getElementById('new-tests');
-
-editCheckbox.addEventListener('change', function () {
-    if (this.checked) {
-        // لو مضغوط على checkbox
-        oldTests.classList.add('d-none');  // اخفي القديم
-        newTests.classList.remove('d-none'); // أظهر الجديد
-    } else {
-        // لو مش مضغوط
-        newTests.classList.add('d-none');  // اخفي الجديد
-        oldTests.classList.remove('d-none'); // أظهر القديم
-    }
-});
-
-
-
-
-/* ======================= Print Result Tab  ============================== */
-
-
-
-const printResultPatientSelect = document.querySelector('.print-patient');
-
-const printResultMobileField = document.getElementById('print-result-mobile');
-const printResultGenderField = document.getElementById('print-result-gender');
-const printResultEditSection = document.getElementById('reprint-section');
-const printResultTestsSection = document.getElementById('print-result-tests-section');
-
-
-printResultPatientSelect.addEventListener('change', function () {
-    if (this.value) {
-        printResultMobileField.classList.remove('d-none');
-        printResultGenderField.classList.remove('d-none');
-        printResultEditSection.classList.remove('d-none');
-        printResultTestsSection.classList.remove('d-none');
-    } else {
-        printResultMobileField.classList.add('d-none');
-        printResultGenderField.classList.add('d-none');
-        printResultEditSection.classList.add('d-none');
-        printResultTestsSection.classList.add('d-none');
-    }
-});
-
-
-
-document.addEventListener('click', function (e) {
-
-    const tag = e.target.closest('.tag');
-    if (!tag) return;
-
-   
-
-    const testOptionsSection = document.getElementById('print-result-test-options-section');
-    const dataTableSection = document.getElementById('print-result-datatable');
-    const printTextfieldSection = document.getElementById('print-result-textfield');
-
-    if (!testOptionsSection || !dataTableSection) {
-        console.error('❌ Section not found');
-        return;
-    }
-
-    testOptionsSection.classList.remove('d-none');
-    dataTableSection.classList.remove('d-none');
-    printTextfieldSection.classList.remove('d-none');
-
-    console.log('✅ Tag clicked:', tag.innerText);
-});
-
-
-
+    // حفظ اللغة
+    localStorage.setItem('lang', lang);
+}

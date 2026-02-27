@@ -33,8 +33,8 @@
     <!-- Flatpickr Css-->
     <link rel="stylesheet" href="../assets/vendor/flatpickr/dist/flatpickr.min.css">
 
-
-    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <!-- Editor Css-->
+    <link href="../assets/css/quill/quill.snow.css" rel="stylesheet">
 
 
 </head>
@@ -51,7 +51,7 @@
 
     <aside class="sidebar sidebar-default sidebar-white sidebar-base navs-rounded-all sidebar-boxed sidebar-mini">
         <div class="sidebar-header d-flex align-items-center justify-content-start">
-            <a href="../dashboard/index.html" class="navbar-brand">
+            <a href="../dashboard/lab-test-tool.html" class="navbar-brand">
 
                 <!--Logo start-->
                 <div class="logo-main">
@@ -84,7 +84,7 @@
                 <ul class="navbar-nav iq-main-menu" id="sidebar-menu">
                     <li class="nav-item static-item">
                         <a class="nav-link static-item disabled" href="#" tabindex="-1">
-                            <span class="default-icon" data-ar="الحجز" data-en="Reservation">الحجز</span>
+                            <span class="default-icon" data-ar="المعمل" data-en="Laboratory">المعمل</span>
                             <span class="mini-icon">-</span>
                         </a>
                     </li>
@@ -813,7 +813,7 @@
                             <div class="card-body p-0">
                                 <div class="table-responsive mt-4">
 
-                                    <table id="reservation-invoices" class="table table-striped mb-0" role="grid">
+                                    <table class="table table-striped mb-0" role="grid">
                                         <thead>
                                             <tr>
                                                 <th><input class="form-check-input" type="checkbox" value="" id=""></th>
@@ -875,8 +875,8 @@
                                 </h4>
                             </div>
                             <div class="card-body">
-                                <div>
-                                    <div  id="custom_result"></div>
+                                 <div>
+                                    <div id="editor" style="height: 200px;"></div>
                                 </div>
 
                             </div>
@@ -963,7 +963,7 @@
                                         <form>
                                             <div class="row">
                                                 <div class="tags-container">
-                                                    <div class="tag">CBC</div>
+                                                    <div class="test-tag-print">CBC</div>
                                                 </div>
                                             </div>
                                         </form>
@@ -1090,8 +1090,8 @@
                             </div>
                             <div class="card-body">
                                 <div class="col-12 col-md form-group">
-                                    <input type="text" class="form-control-sm form-control mb-3" id="print_custom_result"
-                                        placeholder="" disabled>
+                                    <input type="text" class="form-control-sm form-control mb-3"
+                                        id="print_custom_result" placeholder="" disabled>
                                 </div>
                             </div>
                         </div>
@@ -1442,8 +1442,9 @@
     <!-- Flatpickr Script -->
     <script src="../assets/vendor/flatpickr/dist/flatpickr.min.js"></script>
 
-    <!-- TinyMCE CDN -->
-    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+   <!-- Quill CDN -->
+    <script src="../assets/js/quill/quill.min.js"></script>
+
 
     <!-- Lab Script -->
     <script src="../assets/js/lab.js"></script>
@@ -1457,140 +1458,6 @@
 
 
     <!--------------------------------- Modals -------------------------------------------->
-
-    <!-- New Patient Modal -->
-    <div class="modal fade" id="addPatientModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel" data-ar="إضافة مريض جديد"
-                        data-en="Create a New Patient">إضافة مريض جديد</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="col form-group">
-                            <label class="form-label" for="patient_name" data-ar="إسم المريض *"
-                                data-en="Patient Name *">إسم المريض *</label>
-                            <input type="text" class="form-control-sm form-control mb-3" id="patient_name"
-                                placeholder="">
-                        </div>
-                        <div class="col form-group">
-                            <label class="form-label" for="gender" data-ar="النوع *" data-en="Gender *">النوع *</label>
-                            <input type="text" class="form-control-sm form-control mb-3" id="gender" placeholder="">
-                        </div>
-                        <div class="col form-group">
-                            <label class="form-label" for="mobile" data-ar="رقم الموبايل *" data-en="Mobile *">رقم
-                                الموبايل *</label>
-                            <input type="text" class="form-control-sm form-control mb-3" id="mobile" placeholder="">
-                        </div>
-                        <div class="col form-group">
-                            <label class="form-label" for="gender" data-ar="العمر *" data-en="Age *">العمر *</label>
-                            <input type="age" class="form-control-sm form-control mb-3" id="age" placeholder="">
-                        </div>
-                        <div class="col form-group">
-                            <label class="form-label" for="address" data-ar="العنوان *" data-en="Address *">العنوان
-                                *</label>
-                            <input type="text" class="form-control-sm form-control mb-3" id="address" placeholder="">
-                        </div>
-                        <div class="col form-group">
-                            <label class="form-label" for="national_id" data-ar="رقم الهوية" data-en="National ID">رقم
-                                الهوية</label>
-                            <input type="age" class="form-control-sm form-control mb-3" id="national_id" placeholder="">
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-ar="إلغاء"
-                        data-en="Close">إلغاء</button>
-                    <button type="button" class="btn btn-primary" data-ar="إرسال" data-en="Submit">إرسال</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Reservation Modal -->
-    <div class="modal fade" id="reservationModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel" data-ar="المواعيد المتاحة" data-en="Available Slots">
-                        المواعيد المتاحة</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="row">
-                            <div class="col-12 col-md form-group">
-                                <label class="form-label" for="healthcare_practitioner" data-ar="ممارس الرعاية الصحية"
-                                    data-en="Healthcare Practitioner">ممارس الرعاية الصحية</label>
-                                <input type="text" class="form-control-sm form-control mb-3"
-                                    id="healthcare_practitioner" placeholder="HLC-PRAC-2024-00001">
-                            </div>
-                            <div class="col-12 col-md form-group">
-                                <label class="form-label" for="date" data-ar="التاريخ *" data-en="Date *">التاريخ
-                                    *</label>
-                                <select id="date" class="form-select-sm form-select mb-3 shadow-none">
-                                    <option data-ar="السبت" data-en="Saturday" selected="">السبت</option>
-                                    <option data-ar="الأحد" data-en="Sunday" value="1">الأحد</option>
-                                    <option data-ar="الإثنين" data-en="Monday" value="2">الإثنين</option>
-                                    <option data-ar="الثلاثاء" data-en="Tuseday" value="3">الثلاثاء</option>
-                                    <option data-ar="الأربعاء" data-en="Wednesday" value="4">الأربعاء</option>
-                                    <option data-ar="الخميس" data-en="Thursday" value="5">الخميس</option>
-                                    <option data-ar="الجمعة" data-en="Friday" value="6">الجمعة</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-check mb-2">
-                                <input class="form-check-input" type="checkbox" id="isConsulting">
-                                <label class="form-check-label" for="isConsulting" data-ar="الإستشارة"
-                                    data-en="Consultation">
-                                    الإستشارة
-                                </label>
-                            </div>
-                        </div>
-
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <div class="row col-12">
-                        <div class="text-center"><b data-ar="الرسوم:" data-en="Fees:">Fees:</b> 100.0 L.E</div>
-                    </div>
-                    <div class="row col-12">
-                        <div class="text-center"><b data-ar="وحدة الخدمة:" data-en="Service Unit:">وحدة الخدمة:</b>
-                            <span data-ar="طبيب باطني" data-en="Internist">طبيب باطني</span>
-                        </div>
-                    </div>
-                    <div class="row col-12">
-                        <div class="text-center"><b data-ar="نوع الحجز:" data-en="Reservation Type:">Reservation
-                                Type:</b> <span data-ar="إستشارة" data-en="Consultation">إستشارة</span> </div>
-                    </div>
-                </div>
-
-                <div class="d-flex justify-content-center gap-2 flex-wrap">
-                    <button class="btn slot-btn mb-2">
-                        <div class="slot-time">
-                            00:00 AM – 11:59 PM
-                        </div>
-                        <div class="slot-price">
-                            199 EGP
-                        </div>
-                    </button>
-                    <button class="btn slot-btn mb-2">
-                        <div class="slot-time">
-                            00:00 AM – 11:59 PM
-                        </div>
-                        <div class="slot-price">
-                            199 EGP
-                        </div>
-                    </button>
-                </div>
-
-            </div>
-        </div>
-    </div>
 
     <!-- Add Eternal Lab -->
     <div class="modal fade" id="addExternalLabModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
@@ -1656,72 +1523,8 @@
         </div>
     </div>
 
-    <!-- Pay Dental Procedure Modal -->
-    <div class="modal fade" id="payDentalProcedureModal" data-bs-backdrop="static" data-bs-keyboard="false"
-        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel" data-ar="دفع إجراءات الأسنان"
-                        data-en="Pay Dental Procedure">دفع إجراءات الأسنان</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="col form-group">
-                            <label class="form-label" for="paid-amount" data-ar="المبلغ المدفوع *"
-                                data-en="Paid Amount *">المبلغ المدفوع *</label>
-                            <input type="text" class="form-control-sm form-control mb-3" id="paid-amount"
-                                placeholder="">
-                        </div>
-                        <div class="col form-group">
-                            <label class="form-label" for="paper-receipt" data-ar="الإيصال الورقي"
-                                data-en="Paper Receipt">الإيصال الورقي</label>
-                            <input type="text" class="form-control-sm form-control mb-3" id="paper-receipt"
-                                placeholder="">
-                        </div>
+   
 
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-ar="إلغاء"
-                        data-en="Close">إلغاء</button>
-                    <button type="button" class="btn btn-primary" data-ar="إرسال" data-en="Submit">إرسال</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- Paid Amount Modal (Pay Requests) -->
-    <div class="modal fade" id="paidAmountModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <!-- <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel" data-ar="دفع إجراءات الأسنان"
-                        data-en="Pay Dental Procedure">دفع إجراءات الأسنان</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div> -->
-                <div class="modal-body">
-                    <form>
-                        <!-- <div class="col form-group">
-                            <label class="form-label" for="paid-amount" data-ar="المبلغ المدفوع *"
-                                data-en="Paid Amount *">المبلغ المدفوع *</label>
-                            <input type="text" class="form-control-sm form-control mb-3" id="paid-amount"
-                                placeholder="">
-                        </div> -->
-
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-ar="إلغاء"
-                        data-en="Close">إلغاء</button>
-                    <button type="button" class="btn btn-primary" data-ar="إرسال" data-en="Submit">إرسال</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
 </body>
 

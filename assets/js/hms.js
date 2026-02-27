@@ -527,3 +527,79 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+
+// ================================================
+// تحديث عنوان الصفحة حسب التاب واللغة
+// ================================================
+function updatePageTitle(link) {
+    const pageTitle = document.getElementById('page-title');
+    const currentLang = window.currentLang || 'ar';
+    const title = link.querySelector('.item-name')?.getAttribute(`data-${currentLang}`);
+    if (title) pageTitle.textContent = title;
+
+    // حفظ التاب الحالي في localStorage
+    const target = link.getAttribute('data-target') || link.getAttribute('href');
+    localStorage.setItem('activeTab', target);
+}
+
+// ================================================
+// التعامل مع كل التابات
+// ================================================
+const navLinks = document.querySelectorAll('.nav-link[data-target]');
+
+// عند الضغط على أي تاب
+navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        navLinks.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+
+        updatePageTitle(link);
+    });
+});
+
+// ================================================
+// عند تحميل الصفحة، ضبط أول تاب كـ active إذا لا يوجد تاب مخزن
+// ================================================
+window.addEventListener('DOMContentLoaded', () => {
+    const savedTab = localStorage.getItem('activeTab');
+    let activeLink;
+
+    if (savedTab) {
+        // استخدم التاب المخزن إذا موجود
+        activeLink = Array.from(navLinks).find(link => 
+            link.getAttribute('data-target') === savedTab
+        );
+    }
+
+    // إذا لم يوجد تاب مخزن أو لأول مرة، اختر أول تاب في القائمة
+    if (!activeLink) activeLink = navLinks[0];
+
+    // ضبط active
+    navLinks.forEach(l => l.classList.remove('active'));
+    if (activeLink) activeLink.classList.add('active');
+
+    // تحديث العنوان
+    if (activeLink) updatePageTitle(activeLink);
+});
+
+// ================================================
+// دالة تغيير اللغة
+// ================================================
+function setLanguage(lang) {
+    window.currentLang = lang;
+
+    // تحديث كل النصوص حسب اللغة
+    document.querySelectorAll('[data-ar][data-en]').forEach(el => {
+        el.textContent = el.getAttribute(`data-${lang}`);
+    });
+
+    // تحديث العنوان حسب التاب الحالي دون تغيير الـ active tab
+    const activeLink = document.querySelector('.nav-link.active');
+    if (activeLink) {
+        updatePageTitle(activeLink);
+    }
+
+    // حفظ اللغة
+    localStorage.setItem('lang', lang);
+}

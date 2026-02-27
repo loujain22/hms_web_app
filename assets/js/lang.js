@@ -1,10 +1,15 @@
-function setLanguage(lang) {
-  // تغيير النصوص
-  document.querySelectorAll('[data-ar]').forEach(el => {
-    el.textContent = el.getAttribute(`data-${lang}`);
-  });
 
-  // تغيير الاتجاه واللغة
+
+
+
+function setLanguage(lang) {
+  window.currentLang = lang;
+
+  // تحديد التاب الحالي قبل التغيير
+  const activeLink = document.querySelector('.nav-link.active');
+  const activeTarget = activeLink?.getAttribute('data-target') || activeLink?.getAttribute('href');
+
+  // تغيير اتجاه الصفحة واللغة
   if (lang === 'ar') {
     document.documentElement.dir = 'rtl';
     document.documentElement.lang = 'ar';
@@ -13,33 +18,36 @@ function setLanguage(lang) {
     document.documentElement.lang = 'en';
   }
 
-  // تغيير محاذاة النصوص تلقائيًا (مثال للhero-center)
+  // تحديث كل النصوص حسب اللغة
+  document.querySelectorAll('[data-ar][data-en]').forEach(el => {
+    el.textContent = el.getAttribute(`data-${lang}`);
+  });
+
+  // تغيير محاذاة النصوص تلقائيًا
   document.querySelectorAll('.hero-center').forEach(el => {
     el.style.textAlign = lang === 'ar' ? 'right' : 'left';
   });
 
-  // تغيير موقع Dropdown حسب الاتجاه
-  const langDropdown = document.querySelector('.language-dropdown');
-  if (langDropdown) {
-    if (lang === 'ar') {
-      langDropdown.style.left = '20px';
-      langDropdown.style.right = 'auto';
-    } else {
-      langDropdown.style.right = '20px';
-      langDropdown.style.left = 'auto';
-    }
-  }
+  // إعادة تفعيل نفس التاب بعد تغيير اللغة
+  if (activeTarget) {
+    document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+    const currentLink = Array.from(document.querySelectorAll('.nav-link')).find(
+      link => link.getAttribute('data-target') === activeTarget || link.getAttribute('href') === activeTarget
+    );
+    if (currentLink) currentLink.classList.add('active');
 
-  // مثال: تغيير loginTitle
-  const el = document.getElementById('loginTitle');
-  if(el){
-      const text = el.getAttribute(`data-${lang}`);
-      el.innerHTML = text.replace('|', '<br>');
+    // تحديث العنوان حسب التاب الحالي
+    const pageTitle = document.getElementById('page-title');
+    if (pageTitle) {
+      const title = currentLink.querySelector('.item-name')?.getAttribute(`data-${lang}`) || pageTitle.getAttribute(`data-${lang}`);
+      pageTitle.textContent = title;
+    }
   }
 
   // حفظ اللغة
   localStorage.setItem('lang', lang);
 }
+
 
 // عند تحميل الصفحة
 document.addEventListener('DOMContentLoaded', function () {
@@ -48,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // تحديث Dropdown إذا موجود
   const languageSelect = document.getElementById('languageSelect');
-  if(languageSelect){
-      languageSelect.value = savedLang;
+  if (languageSelect) {
+    languageSelect.value = savedLang;
   }
 });

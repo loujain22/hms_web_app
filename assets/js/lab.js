@@ -310,7 +310,7 @@ patientSelect.addEventListener('change', function () {
 
 document.addEventListener('click', function (e) {
 
-    const tag = e.target.closest('.tag');
+    const tag = e.target.closest('.test-tag');
     if (!tag) return;
 
     const testOptionsSection = document.getElementById('test-options-section');
@@ -334,8 +334,17 @@ document.addEventListener('click', function (e) {
 
 /* ========================= Texteditor (Input-Result) ====================== */
 
-var quill = new Quill('#custom_result', {
-    theme: 'snow'
+const quill = new Quill('#editor', {
+    theme: 'snow',
+    placeholder: '',
+    modules: {
+        toolbar: [
+            ['bold', 'italic', 'underline'],
+            [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+            ['link'],
+            ['clean']
+        ]
+    }
 });
 
 
@@ -390,7 +399,7 @@ printResultPatientSelect.addEventListener('change', function () {
 
 document.addEventListener('click', function (e) {
 
-    const tag = e.target.closest('.test-tag');
+    const tag = e.target.closest('.test-tag-print');
     if (!tag) return;
 
    
@@ -413,3 +422,99 @@ document.addEventListener('click', function (e) {
 
 
 
+/* ======================= Empty Datatabel ============= */
+
+const tables = document.querySelectorAll('.table'); 
+tables.forEach(table => {
+    const tbody = table.querySelector('tbody');
+
+    if (!tbody || tbody.children.length === 0) {
+        const emptyRow = document.createElement('tr');
+        const td = document.createElement('td');
+        td.colSpan = table.querySelectorAll('thead th').length; 
+        td.style.textAlign = 'center';
+        td.style.fontStyle = 'italic';
+        td.textContent = 'لم يتم إضافة بيانات بعد';
+        emptyRow.appendChild(td);
+        tbody.appendChild(emptyRow);
+    }
+});
+
+
+
+
+/* =====================  Changing page title based sidebar ============= */
+// ================================================
+// تحديث عنوان الصفحة حسب التاب واللغة
+// ================================================
+function updatePageTitle(link) {
+    const pageTitle = document.getElementById('page-title');
+    const currentLang = window.currentLang || 'ar';
+    const title = link.querySelector('.item-name')?.getAttribute(`data-${currentLang}`);
+    if (title) pageTitle.textContent = title;
+
+    // حفظ التاب الحالي في localStorage
+    const target = link.getAttribute('data-target') || link.getAttribute('href');
+    localStorage.setItem('activeTab', target);
+}
+
+// ================================================
+// التعامل مع كل التابات
+// ================================================
+const navLinks = document.querySelectorAll('.nav-link[data-target]');
+
+// عند الضغط على أي تاب
+navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        navLinks.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+
+        updatePageTitle(link);
+    });
+});
+
+// ================================================
+// عند تحميل الصفحة، استعادة آخر تاب مختار أو اختيار أول تاب افتراضي
+// ================================================
+window.addEventListener('DOMContentLoaded', () => {
+    const savedTab = localStorage.getItem('activeTab');
+    let activeLink;
+
+    if (savedTab) {
+        activeLink = Array.from(navLinks).find(link => 
+            link.getAttribute('data-target') === savedTab
+        );
+    }
+
+    // إذا لم يوجد تاب مخزن، نختار أول تاب
+    if (!activeLink) activeLink = navLinks[0];
+
+    // ضبط active
+    navLinks.forEach(l => l.classList.remove('active'));
+    if (activeLink) activeLink.classList.add('active');
+
+    // تحديث العنوان
+    if (activeLink) updatePageTitle(activeLink);
+});
+
+// ================================================
+// دالة تغيير اللغة
+// ================================================
+function setLanguage(lang) {
+    window.currentLang = lang;
+
+    // تحديث كل النصوص حسب اللغة
+    document.querySelectorAll('[data-ar][data-en]').forEach(el => {
+        el.textContent = el.getAttribute(`data-${lang}`);
+    });
+
+    // تحديث العنوان حسب التاب الحالي دون تغيير الـ active tab
+    const activeLink = document.querySelector('.nav-link.active');
+    if (activeLink) {
+        updatePageTitle(activeLink);
+    }
+
+    // حفظ اللغة
+    localStorage.setItem('lang', lang);
+}
