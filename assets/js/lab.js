@@ -397,6 +397,12 @@ printResultPatientSelect.addEventListener('change', function () {
 
 
 
+
+
+
+
+
+
 document.addEventListener('click', function (e) {
 
     const tag = e.target.closest('.test-tag-print');
@@ -442,8 +448,6 @@ tables.forEach(table => {
 
 
 
-
-/* =====================  Changing page title based sidebar ============= */
 // ================================================
 // تحديث عنوان الصفحة حسب التاب واللغة
 // ================================================
@@ -475,19 +479,20 @@ navLinks.forEach(link => {
 });
 
 // ================================================
-// عند تحميل الصفحة، استعادة آخر تاب مختار أو اختيار أول تاب افتراضي
+// عند تحميل الصفحة، ضبط أول تاب كـ active إذا لا يوجد تاب مخزن
 // ================================================
 window.addEventListener('DOMContentLoaded', () => {
     const savedTab = localStorage.getItem('activeTab');
     let activeLink;
 
     if (savedTab) {
+        // استخدم التاب المخزن إذا موجود
         activeLink = Array.from(navLinks).find(link => 
             link.getAttribute('data-target') === savedTab
         );
     }
 
-    // إذا لم يوجد تاب مخزن، نختار أول تاب
+    // إذا لم يوجد تاب مخزن أو لأول مرة، اختر أول تاب في القائمة
     if (!activeLink) activeLink = navLinks[0];
 
     // ضبط active
