@@ -843,28 +843,28 @@ body>.modal {
 
 @font-face {
   font-family: 'Cairo';
-  src: url('../assets/fonts/Cairo/Cairo-Regular.ttf') format('truetype');
+  src: url('../assets/fonts/cairo/Cairo-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Cairo';
-  src: url('../assets/fonts/Cairo/Cairo-SemiBold.ttf') format('truetype');
+  src: url('../assets/fonts/cairo/Cairo-SemiBold.ttf') format('truetype');
   font-weight: 600;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Cairo';
-  src: url('../assets/fonts/Cairo/Cairo-Bold.ttf') format('truetype');
+  src: url('../assets/fonts/cairo/Cairo-Bold.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Cairo';
-  src: url('../assets/fonts/Cairo/Cairo-ExtraBold.ttf') format('truetype');
+  src: url('../assets/fonts/cairo/Cairo-ExtraBold.ttf') format('truetype');
   font-weight: 800;
   font-style: normal;
 }
@@ -882,7 +882,7 @@ body {
 
 
 h4 {
-  font-family: 'Cairo';
+  font-family: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
   font-weight: 700;
 }
 

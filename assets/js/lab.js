@@ -44,9 +44,6 @@ document.querySelectorAll('.page').forEach(page => {
 
 
 
-
-
-
 document.addEventListener("DOMContentLoaded", function () {
     const sidebar = document.querySelector('.sidebar');
     const links = document.querySelectorAll('.sidebar .nav-link');
@@ -54,15 +51,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // تفعيل Tooltips لكل الروابط
     function enableTooltips() {
+        const currentLang = window.currentLang || 'ar';
+
         links.forEach(el => {
-            // استخدمي data-title لو موجود أو title من HTML
-            const title = el.dataset.title || el.getAttribute('title') || el.textContent.trim();
-            if (title) {
-                el.setAttribute('data-bs-toggle', 'tooltip');
-                el.setAttribute('data-bs-placement', 'right');
-                el.setAttribute('title', title);
-                tooltips.push(new bootstrap.Tooltip(el));
-            }
+            const title = el.getAttribute(`data-title-${currentLang}`);
+            if (!title) return;
+
+            el.setAttribute('data-bs-toggle', 'tooltip');
+            el.setAttribute('data-bs-placement', 'right');
+            el.setAttribute('data-bs-title', title);
+
+            tooltips.push(new bootstrap.Tooltip(el));
         });
     }
 
@@ -86,6 +85,13 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+
+    window.refreshSidebarTooltips = function () {
+        if (sidebar.classList.contains('sidebar-mini')) {
+            disableTooltips();
+            enableTooltips();
+        }
+    };
     // أول تحميل الصفحة
     checkSidebarState();
 
@@ -97,54 +103,9 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-// document.addEventListener("DOMContentLoaded", function () {
-//     const sidebarLinks = document.querySelectorAll('.sidebar .nav-link[data-target]');
-//     const pages = document.querySelectorAll('.page');
 
-//     function showPage(pageId) {
-//         pages.forEach(page => {
-//             page.style.display = (page.id === pageId) ? 'block' : 'none';
-//         });
 
-//         sessionStorage.setItem('currentPage', pageId);
-//     }
 
-//     sidebarLinks.forEach(link => {
-//         link.addEventListener('click', function (e) {
-//             e.preventDefault();
-
-//             sidebarLinks.forEach(l => l.classList.remove('active'));
-//             this.classList.add('active');
-
-//             const target = this.dataset.target;
-//             if (target) {
-//                 showPage(target);
-//             }
-//         });
-//     });
-
-//     const savedPage = sessionStorage.getItem('currentPage');
-//     const defaultPage = document.body.dataset.defaultPage;
-
-//     if (savedPage && document.getElementById(savedPage)) {
-//         showPage(savedPage);
-
-//         sidebarLinks.forEach(link => {
-//             if (link.dataset.target === savedPage) {
-//                 link.classList.add('active');
-//             }
-//         });
-//     } 
-//     else if (defaultPage && document.getElementById(defaultPage)) {
-//         showPage(defaultPage);
-
-//         sidebarLinks.forEach(link => {
-//             if (link.dataset.target === defaultPage) {
-//                 link.classList.add('active');
-//             }
-//         });
-//     }
-// });
 
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -408,7 +369,7 @@ document.addEventListener('click', function (e) {
     const tag = e.target.closest('.test-tag-print');
     if (!tag) return;
 
-   
+
 
     const testOptionsSection = document.getElementById('print-result-test-options-section');
     const dataTableSection = document.getElementById('print-result-datatable');
@@ -428,16 +389,16 @@ document.addEventListener('click', function (e) {
 
 
 
-/* ======================= Empty Datatabel ============= */
+/* ======================= Empty Datatable ============= */
 
-const tables = document.querySelectorAll('.table'); 
+const tables = document.querySelectorAll('.table');
 tables.forEach(table => {
     const tbody = table.querySelector('tbody');
 
     if (!tbody || tbody.children.length === 0) {
         const emptyRow = document.createElement('tr');
         const td = document.createElement('td');
-        td.colSpan = table.querySelectorAll('thead th').length; 
+        td.colSpan = table.querySelectorAll('thead th').length;
         td.style.textAlign = 'center';
         td.style.fontStyle = 'italic';
         td.textContent = 'لم يتم إضافة بيانات بعد';
@@ -487,7 +448,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     if (savedTab) {
         // استخدم التاب المخزن إذا موجود
-        activeLink = Array.from(navLinks).find(link => 
+        activeLink = Array.from(navLinks).find(link =>
             link.getAttribute('data-target') === savedTab
         );
     }

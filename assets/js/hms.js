@@ -1,40 +1,5 @@
 
 
-// document.querySelectorAll('.page').forEach(page => {
-//   const checkbox = page.querySelector('#health_insurance');
-//   const formGroup = page.querySelector('#health_insurance_Section');
-
-//   checkbox.addEventListener('change', function () {
-//     if (this.value !== "") {
-//       formGroup.classList.remove('d-none');
-//         scrollToSection();
-//     } else {
-//       formGroup.classList.add('d-none');
-//     }
-//   });
-// });
-
-
-//--------- Auto Scroll Down -----------
-
-// document.addEventListener('DOMContentLoaded', function () {
-//     const checkbox = document.getElementById('health_insurance');
-//     const formGroup = document.getElementById('health_insurance_Section');
-
-//     checkbox.addEventListener('change', function () {
-//         if (this.checked) {
-//             formGroup.classList.remove('d-none');
-//             scrollToSection();
-//         } else {
-//             formGroup.classList.add('d-none');
-//         }
-
-//     });
-// });
-
-
-
-
 
 //------ Scroll Up ------------
 
@@ -94,23 +59,6 @@ document.querySelectorAll('.page').forEach(page => {
 });
 
 
-// document.querySelectorAll('.page').forEach(page => {
-//     const checkbox = page.querySelector('#health_insurance');
-//     const sections = page.querySelectorAll('.health_insurance_Section');
-
-//     if (!checkbox || sections.length === 0) return;
-
-//     checkbox.addEventListener('change', function () {
-//         sections.forEach(section => {
-//             section.classList.toggle('d-none', !this.checked);
-//         });
-
-//         scrollToSection();
-//     });
-// });
-
-
-
 
 // ------------------ Special Doctor Percentage ---------------
 
@@ -156,15 +104,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // تفعيل Tooltips لكل الروابط
     function enableTooltips() {
+        const currentLang = window.currentLang || 'ar';
+
         links.forEach(el => {
-            // استخدمي data-title لو موجود أو title من HTML
-            const title = el.dataset.title || el.getAttribute('title') || el.textContent.trim();
-            if (title) {
-                el.setAttribute('data-bs-toggle', 'tooltip');
-                el.setAttribute('data-bs-placement', 'right');
-                el.setAttribute('title', title);
-                tooltips.push(new bootstrap.Tooltip(el));
-            }
+            const title = el.getAttribute(`data-title-${currentLang}`);
+            if (!title) return;
+
+            el.setAttribute('data-bs-toggle', 'tooltip');
+            el.setAttribute('data-bs-placement', 'right');
+            el.setAttribute('data-bs-title', title);
+
+            tooltips.push(new bootstrap.Tooltip(el));
         });
     }
 
@@ -188,6 +138,13 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+
+    window.refreshSidebarTooltips = function () {
+        if (sidebar.classList.contains('sidebar-mini')) {
+            disableTooltips();
+            enableTooltips();
+        }
+    };
     // أول تحميل الصفحة
     checkSidebarState();
 
@@ -199,54 +156,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-// document.addEventListener("DOMContentLoaded", function () {
-//     const sidebarLinks = document.querySelectorAll('.sidebar .nav-link[data-target]');
-//     const pages = document.querySelectorAll('.page');
-
-//     function showPage(pageId) {
-//         pages.forEach(page => {
-//             page.style.display = (page.id === pageId) ? 'block' : 'none';
-//         });
-
-//         sessionStorage.setItem('currentPage', pageId);
-//     }
-
-//     sidebarLinks.forEach(link => {
-//         link.addEventListener('click', function (e) {
-//             e.preventDefault();
-
-//             sidebarLinks.forEach(l => l.classList.remove('active'));
-//             this.classList.add('active');
-
-//             const target = this.dataset.target;
-//             if (target) {
-//                 showPage(target);
-//             }
-//         });
-//     });
-
-//     const savedPage = sessionStorage.getItem('currentPage');
-//     const defaultPage = document.body.dataset.defaultPage;
-
-//     if (savedPage && document.getElementById(savedPage)) {
-//         showPage(savedPage);
-
-//         sidebarLinks.forEach(link => {
-//             if (link.dataset.target === savedPage) {
-//                 link.classList.add('active');
-//             }
-//         });
-//     } 
-//     else if (defaultPage && document.getElementById(defaultPage)) {
-//         showPage(defaultPage);
-
-//         sidebarLinks.forEach(link => {
-//             if (link.dataset.target === defaultPage) {
-//                 link.classList.add('active');
-//             }
-//         });
-//     }
-// });
 
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -499,14 +408,14 @@ select.addEventListener('change', function () {
 
 
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const sessionType = document.getElementById('session_type');
     const countSessionsDiv = document.getElementById('count_sessions').closest('.form-group');
     const followSessionsCheckbox = document.getElementById('follow_sessions');
     const availableSessionsDiv = document.getElementById('available_sessions').closest('.form-group');
 
     // عند اختيار نوع الجلسة
-    sessionType.addEventListener('change', function() {
+    sessionType.addEventListener('change', function () {
         if (this.value !== "") {
             countSessionsDiv.classList.remove('d-none');
         } else {
@@ -518,7 +427,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // عند الضغط على Follow Sessions checkbox
-    followSessionsCheckbox.addEventListener('change', function() {
+    followSessionsCheckbox.addEventListener('change', function () {
         if (this.checked) {
             availableSessionsDiv.classList.remove('d-none');
         } else {
@@ -526,6 +435,34 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+
+
+
+
+
+/* ======================= Empty Datatable ============= */
+
+const tables = document.querySelectorAll('.table');
+tables.forEach(table => {
+    const tbody = table.querySelector('tbody');
+
+    if (!tbody || tbody.children.length === 0) {
+        const emptyRow = document.createElement('tr');
+        const td = document.createElement('td');
+        td.colSpan = table.querySelectorAll('thead th').length;
+        td.style.textAlign = 'center';
+        td.style.fontStyle = 'italic';
+        td.textContent = 'لم يتم إضافة بيانات بعد';
+        emptyRow.appendChild(td);
+        tbody.appendChild(emptyRow);
+    }
+});
+
+
+
+
+
 
 
 // ================================================
@@ -567,7 +504,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     if (savedTab) {
         // استخدم التاب المخزن إذا موجود
-        activeLink = Array.from(navLinks).find(link => 
+        activeLink = Array.from(navLinks).find(link =>
             link.getAttribute('data-target') === savedTab
         );
     }

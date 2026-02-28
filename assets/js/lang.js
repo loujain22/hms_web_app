@@ -44,6 +44,15 @@ function setLanguage(lang) {
     }
   }
 
+
+/* =========== Sidebar Tooltip ================ */
+
+  if (typeof refreshSidebarTooltips === 'function') {
+    refreshSidebarTooltips();
+  }
+
+
+
   // حفظ اللغة
   localStorage.setItem('lang', lang);
 }
